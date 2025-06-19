@@ -4,6 +4,7 @@ import Email from './Email';
 import Phone from './Phone';
 import Paper from './Paper';
 import Education from './Education';
+import Professional from './Professional';
 
 import './App.css';
 
@@ -23,6 +24,29 @@ export default function App() {
 	const [schoolName, setSchoolName] = useState('');
 	const [schoolYear, setSchoolYear] = useState(0);
 	const [degree, setDegree] = useState('');
+	const [jobArray, setJobArray] = useState([]);
+	const [companyName, setCompanyName] = useState('');
+	const [jobTitle, setJobTitle] = useState('');
+	const [jobYears, setJobYears] = useState(0);
+
+	function handleAddJob(e) {
+		e.preventDefault();
+		const newJob = { company: companyName, job: jobTitle, year: jobYears };
+		setJobArray((j) => [...j, newJob]);
+		setCompanyName('');
+		setJobYears('');
+		setJobTitle('');
+	}
+
+	function handleCompanyChange(e) {
+		setCompanyName(e.target.value);
+	}
+	function handleJobYearsChange(e) {
+		setJobYears(e.target.value);
+	}
+	function handleJobTitleChange(e) {
+		setJobTitle(e.target.value);
+	}
 
 	function handleAddSchool(e) {
 		e.preventDefault();
@@ -60,7 +84,7 @@ export default function App() {
 		setEmail(e.target.value);
 	}
 	return (
-		<div className="flex">
+		<div className="flex w-full">
 			<Form>
 				<div className="general-info flex flex-col w-1/2 gap-2 ">
 					<h2>General Information</h2>
@@ -73,7 +97,7 @@ export default function App() {
 					<Phone phone={phone} handlePhoneChange={handlePhoneChange} />
 				</div>
 
-				<div className="general-info flex flex-col w-1/2">
+				<div className="general-info flex flex-col w-1/2 gap-2">
 					<h2>Educational Experience</h2>
 					<Education
 						schoolName={schoolName}
@@ -86,11 +110,26 @@ export default function App() {
 					/>
 				</div>
 
-				<div className="general-info flex flex-col w-1/4">
+				<div className="general-info flex flex-col w-1/2 gap-2">
 					<h2>Professional Experience</h2>
+					<Professional
+						companyName={companyName}
+						jobTitle={jobTitle}
+						jobYears={jobYears}
+						handleAddJob={handleAddJob}
+						handleCompanyChange={handleCompanyChange}
+						handleJobYearsChange={handleJobYearsChange}
+						handleJobTitleChange={handleJobTitleChange}
+					/>
 				</div>
 			</Form>
-			<Paper name={name} email={email} phone={phone} education={schoolArray} />
+			<Paper
+				name={name}
+				email={email}
+				phone={phone}
+				education={schoolArray}
+				jobs={jobArray}
+			/>
 		</div>
 	);
 }

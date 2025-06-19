@@ -8,7 +8,7 @@ export default function Education({
 	handleYearsChange,
 }) {
 	return (
-		<div className="w-full">
+		<div className="w-full flex flex-col">
 			<input
 				type="text"
 				value={schoolName}

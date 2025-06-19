@@ -1,4 +1,4 @@
-export default function Paper({ name, email, phone, education }) {
+export default function Paper({ name, email, phone, education, jobs }) {
 	return (
 		<div className="w-full border-2 border-black flex-2">
 			<p>
@@ -15,6 +15,15 @@ export default function Paper({ name, email, phone, education }) {
 					);
 				})}
 			</p>
+
+			{jobs.map((job, index) => {
+				return (
+					<p key={index}>
+						{' '}
+						{job.company} {job.job} {job.year}{' '}
+					</p>
+				);
+			})}
 		</div>
 	);
 }

@@ -1,33 +1,38 @@
 import { useState } from 'react';
 
-export default function Professional() {
-	const [jobArray, setJobArray] = useState([]);
-	const [jobName, setJobName] = useState('');
-	const [jobTitle, setJobTitle] = useState('');
-
+export default function Professional({
+	companyName,
+	jobTitle,
+	jobYears,
+	handleCompanyChange,
+	handleJobTitleChange,
+	handleJobYearsChange,
+	handleAddJob,
+}) {
 	return (
-		<div className="w-full">
+		<div className="w-full flex flex-col">
 			<input
 				type="text"
-				value={schoolName}
-				placeholder="School Name"
-				onChange={handleSchoolNameChange}
+				value={companyName}
+				placeholder="Company Name"
+				onChange={handleCompanyChange}
+			/>
+
+			<input
+				type="text"
+				value={jobTitle}
+				placeholder="Job Title"
+				onChange={handleJobTitleChange}
 			/>
 			<input
 				type="number"
-				value={schoolYear}
+				value={jobYears}
 				placeholder="Number of Years"
-				onChange={handleYearsChange}
+				onChange={handleJobYearsChange}
 			/>
-			<input
-				type="text"
-				value={degree}
-				placeholder="Degree/Cert"
-				onChange={handleDegreeChange}
-			/>
-			<button className="bg-amber-700" onClick={handleAddSchool}>
+			<button className="bg-amber-700" onClick={handleAddJob}>
 				{' '}
-				Add School
+				Add Job
 			</button>
 		</div>
 	);
