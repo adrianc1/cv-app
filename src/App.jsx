@@ -29,6 +29,11 @@ export default function App() {
 	const [jobTitle, setJobTitle] = useState('');
 	const [jobYears, setJobYears] = useState(0);
 
+	function generateUniqueId() {
+		// This uses the Web Crypto API, available in modern browsers.
+		return crypto.randomUUID();
+	}
+
 	function handleAddJob(e) {
 		e.preventDefault();
 		const newJob = { company: companyName, job: jobTitle, year: jobYears };
@@ -50,7 +55,12 @@ export default function App() {
 
 	function handleAddSchool(e) {
 		e.preventDefault();
-		const newSchool = { school: schoolName, cert: degree, year: schoolYear };
+		const newSchool = {
+			id: generateUniqueId(),
+			school: schoolName,
+			cert: degree,
+			year: schoolYear,
+		};
 		setSchoolArray((s) => [...s, newSchool]);
 		setSchoolName('');
 		setSchoolYear(0);
@@ -82,6 +92,10 @@ export default function App() {
 
 	function handleEmailChange(e) {
 		setEmail(e.target.value);
+	}
+
+	function editEducationItem(e) {
+		console.log(e);
 	}
 	return (
 		<div className="flex w-full">
@@ -129,6 +143,7 @@ export default function App() {
 				phone={phone}
 				education={schoolArray}
 				jobs={jobArray}
+				editEducationItem={editEducationItem}
 			/>
 		</div>
 	);

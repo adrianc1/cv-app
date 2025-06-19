@@ -1,4 +1,11 @@
-export default function Paper({ name, email, phone, education, jobs }) {
+export default function Paper({
+	name,
+	email,
+	phone,
+	education,
+	jobs,
+	editEducationItem,
+}) {
 	return (
 		<div className="w-full border-2 border-black flex-2">
 			<p>
@@ -6,24 +13,26 @@ export default function Paper({ name, email, phone, education, jobs }) {
 			</p>
 			<p>{email}</p>
 			<p>{phone}</p>
-			<p>
-				{education.map((ed, index) => {
+			<ul>
+				{education.map((ed) => {
 					return (
-						<p key={index}>
+						<li key={ed.id} onClick={editEducationItem}>
 							{ed.school} - {ed.cert} - {ed.year} years
-						</p>
+						</li>
 					);
 				})}
-			</p>
+			</ul>
 
-			{jobs.map((job, index) => {
-				return (
-					<p key={index}>
-						{' '}
-						{job.company} {job.job} {job.year}{' '}
-					</p>
-				);
-			})}
+			<ul>
+				{jobs.map((job, index) => {
+					return (
+						<li key={index}>
+							{' '}
+							{job.company} {job.job} {job.year}{' '}
+						</li>
+					);
+				})}
+			</ul>
 		</div>
 	);
 }
