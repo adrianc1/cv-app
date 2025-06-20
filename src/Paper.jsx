@@ -16,7 +16,7 @@ export default function Paper({
 			<ul>
 				{education.map((ed) => {
 					return (
-						<li key={ed.id} onClick={editEducationItem}>
+						<li key={ed.id} onClick={() => editEducationItem(ed.id)}>
 							{ed.school} - {ed.cert} - {ed.year} years
 						</li>
 					);

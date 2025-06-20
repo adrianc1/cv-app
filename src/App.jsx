@@ -94,9 +94,7 @@ export default function App() {
 		setEmail(e.target.value);
 	}
 
-	function editEducationItem(e) {
-		console.log(e);
-	}
+	function editEducationItem(id) {}
 	return (
 		<div className="flex w-full">
 			<Form>
