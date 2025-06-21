@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Name from './Name';
 import Email from './Email';
 import Phone from './Phone';
@@ -27,7 +27,8 @@ export default function App() {
 	const [jobArray, setJobArray] = useState([]);
 	const [companyName, setCompanyName] = useState('');
 	const [jobTitle, setJobTitle] = useState('');
-	const [jobYears, setJobYears] = useState(0);
+	const [jobYears, setJobYears] = useState('');
+	const [isEditingID, setIsEditingID] = useState(null);
 
 	function generateUniqueId() {
 		// This uses the Web Crypto API, available in modern browsers.
@@ -63,7 +64,7 @@ export default function App() {
 		};
 		setSchoolArray((s) => [...s, newSchool]);
 		setSchoolName('');
-		setSchoolYear(0);
+		setSchoolYear('');
 		setDegree('');
 	}
 
@@ -94,7 +95,24 @@ export default function App() {
 		setEmail(e.target.value);
 	}
 
-	function editEducationItem(id) {}
+	function editEducationItem(id) {
+		console.log(id);
+		setIsEditingID(id);
+		const updatedObj = getDataFromID(schoolArray, id);
+		setSchoolArray(updatedObj);
+	}
+
+	function getDataFromID(arr, id) {
+		return arr.map((item) =>
+			item.id === id ? { ...item, school: 'shiiiit' } : item
+		);
+	}
+	useEffect(() => {
+		if (schoolArray.length > 0) {
+			console.log('Updated schoolArray:', schoolArray);
+		}
+	}, [schoolArray]);
+
 	return (
 		<div className="flex w-full">
 			<Form>
