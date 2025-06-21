@@ -4,7 +4,7 @@ export default function Paper({
 	phone,
 	education,
 	jobs,
-	editEducationItem,
+	
 }) {
 	return (
 		<div className="w-full border-2 border-black flex-2">
@@ -19,7 +19,7 @@ export default function Paper({
 			<ul>
 				{education.map((ed) => {
 					return (
-						<li key={ed.id} onClick={() => editEducationItem(ed.id)}>
+						<li key={ed.id}>
 							{ed.school} - {ed.cert} - {ed.year} years
 						</li>
 					);

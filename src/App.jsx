@@ -29,6 +29,9 @@ export default function App() {
 	const [jobTitle, setJobTitle] = useState('');
 	const [jobYears, setJobYears] = useState('');
 	const [isEditingID, setIsEditingID] = useState(null);
+	const [isEditing, setIsEditing] = useState(null);
+
+	const [editedText, setEditedText] = useState('');
 
 	function generateUniqueId() {
 		// This uses the Web Crypto API, available in modern browsers.
@@ -95,18 +98,17 @@ export default function App() {
 		setEmail(e.target.value);
 	}
 
-	function editEducationItem(id) {
-		console.log(id);
-		setIsEditingID(id);
-		const updatedObj = getDataFromID(schoolArray, id);
-		setSchoolArray(updatedObj);
+	function editEducationItem() {
+		setIsEditing(true);
+		const text = getDataFromID(schoolArray);
+		setEditedText(text);
 	}
 
-	function getDataFromID(arr, id) {
-		return arr.map((item) =>
-			item.id === id ? { ...item, school: 'shiiiit' } : item
-		);
+	function getDataFromID(arr) {
+		const DUPE_ARR = [...arr];
+		return DUPE_ARR;
 	}
+
 	useEffect(() => {
 		if (schoolArray.length > 0) {
 			console.log('Updated schoolArray:', schoolArray);
@@ -116,7 +118,7 @@ export default function App() {
 	return (
 		<div className="flex w-full">
 			<Form>
-				<div className="general-info flex flex-col w-1/2 gap-2 ">
+				<div className="general-info flex flex-col w-3/4 gap-2 ">
 					<h2>General Information</h2>
 					<Name
 						name={name}
@@ -127,9 +129,12 @@ export default function App() {
 					<Phone phone={phone} handlePhoneChange={handlePhoneChange} />
 				</div>
 
-				<div className="general-info flex flex-col w-1/2 gap-2">
+				<div className="general-info flex flex-col w-3/4 gap-2">
 					<h2>Educational Experience</h2>
+
 					<Education
+						schoolArray={schoolArray}
+						setSchoolArray={setSchoolArray}
 						schoolName={schoolName}
 						schoolYear={schoolYear}
 						degree={degree}
@@ -159,7 +164,6 @@ export default function App() {
 				phone={phone}
 				education={schoolArray}
 				jobs={jobArray}
-				editEducationItem={editEducationItem}
 			/>
 		</div>
 	);
