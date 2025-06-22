@@ -22,7 +22,7 @@ export default function App() {
 	const [phone, setPhone] = useState('');
 	const [schoolArray, setSchoolArray] = useState([]);
 	const [schoolName, setSchoolName] = useState('');
-	const [schoolYear, setSchoolYear] = useState(0);
+	const [schoolYear, setSchoolYear] = useState('');
 	const [degree, setDegree] = useState('');
 	const [jobArray, setJobArray] = useState([]);
 	const [companyName, setCompanyName] = useState('');
