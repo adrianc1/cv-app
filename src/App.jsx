@@ -118,7 +118,7 @@ export default function App() {
 	return (
 		<div className="flex w-full">
 			<Form>
-				<div className="general-info flex flex-col w-3/4 gap-2 ">
+				<div className="general-info flex flex-col w-2/3 gap-2 ">
 					<h2>General Information</h2>
 					<Name
 						name={name}
@@ -129,7 +129,7 @@ export default function App() {
 					<Phone phone={phone} handlePhoneChange={handlePhoneChange} />
 				</div>
 
-				<div className="general-info flex flex-col w-3/4 gap-2">
+				<div className="general-info flex flex-col w-2/3">
 					<h2>Educational Experience</h2>
 
 					<Education
@@ -145,7 +145,7 @@ export default function App() {
 					/>
 				</div>
 
-				<div className="general-info flex flex-col w-1/2 gap-2">
+				<div className="general-info flex flex-col w-2/3 gap-2">
 					<h2>Professional Experience</h2>
 					<Professional
 						companyName={companyName}
