@@ -15,10 +15,10 @@ export default function Professional({
 
 	const fields = [
 		{
-			key: 'Company',
+			key: 'company',
 			name: companyName,
 			type: 'text',
-			placeholder: 'Company Name',
+			placeholder: 'company name',
 			onChange: handleCompanyChange,
 		},
 		{
@@ -29,7 +29,7 @@ export default function Professional({
 			onChange: handleJobYearsChange,
 		},
 		{
-			key: 'job title',
+			key: 'job',
 			name: jobTitle,
 			type: 'text',
 			placeholder: 'Job Title',
@@ -41,7 +41,7 @@ export default function Professional({
 		setEditingId(id);
 	}
 
-	function stopEditing(id) {
+	function stopEditing() {
 		setEditingId(null);
 	}
 
@@ -55,7 +55,42 @@ export default function Professional({
 			{jobArray.map((j) => {
 				return (
 					<li key={j.id} className="list-none mt-2">
-						{editingId === j.id ? null : (
+						{editingId === j.id ? (
+							<div className="flex flex-col gap-2">
+								{fields.map((field) => {
+									return (
+										<input
+											key={field.key}
+											type={field.type}
+											value={j[field.key]}
+											placeholder={field.placeholder}
+											onChange={(e) => {
+												setJobArray((prev) => {
+													return prev.map((item) => {
+														if (item.id === editingId) {
+															return { ...item, [field.key]: e.target.value };
+														} else {
+															return item;
+														}
+													});
+												});
+											}}
+										/>
+									);
+								})}
+
+								<button
+									className="w-[80px] h-[30px] hover:bg-green-700 hover:text-white text-green-500 font-bold rounded border"
+									onClick={(e) => {
+										e.preventDefault();
+										stopEditing();
+									}}
+								>
+									{' '}
+									Done
+								</button>
+							</div>
+						) : (
 							<div className="flex items-center justify-between w-full gap-4 border border-gray-500 p-2">
 								<p className="flex-grow min-w-0 overflow-hidden break-words">
 									{j.company} - {j.job} - {j.year} years
