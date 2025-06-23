@@ -14,9 +14,27 @@ export default function Education({
 	const [editingId, setEditingId] = useState(null);
 
 	const fields = [
-		{ key: 'school', type: 'text', placeholder: 'School Name' },
-		{ key: 'year', type: 'number', placeholder: 'Number of Years' },
-		{ key: 'cert', type: 'text', placeholder: 'Degree/Cert' },
+		{
+			key: 'school',
+			name: schoolName,
+			type: 'text',
+			placeholder: 'School Name',
+			onChange: handleSchoolNameChange,
+		},
+		{
+			key: 'year',
+			name: schoolYear,
+			type: 'number',
+			placeholder: 'Number of Years',
+			onChange: handleYearsChange,
+		},
+		{
+			key: 'cert',
+			name: degree,
+			type: 'text',
+			placeholder: 'Degree/Cert',
+			onChange: handleDegreeChange,
+		},
 	];
 
 	function deleteListItem(id, arr) {
@@ -39,7 +57,7 @@ export default function Education({
 				return (
 					<li key={s.id} className="list-none mt-2">
 						{editingId === s.id ? (
-							<div className="flex flex-col">
+							<div className="flex flex-col gap-2">
 								{fields.map((field) => {
 									return (
 										<input
@@ -108,24 +126,17 @@ export default function Education({
 
 			{/* Add new school to the array */}
 			<div className="flex flex-col gap-2 mt-2">
-				<input
-					type="text"
-					value={schoolName}
-					placeholder="School Name"
-					onChange={handleSchoolNameChange}
-				/>
-				<input
-					type="number"
-					value={schoolYear}
-					placeholder="Number of Years"
-					onChange={handleYearsChange}
-				/>
-				<input
-					type="text"
-					value={degree}
-					placeholder="Degree/Cert"
-					onChange={handleDegreeChange}
-				/>
+				{fields.map((field) => {
+					return (
+						<input
+							key={field.key}
+							type={field.type}
+							value={field.name}
+							placeholder={field.placeholder}
+							onChange={field.onChange}
+						/>
+					);
+				})}
 				<button
 					className="w-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 rounded-full mx-auto mt-2"
 					onClick={handleAddSchool}
