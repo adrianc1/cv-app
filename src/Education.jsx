@@ -13,6 +13,12 @@ export default function Education({
 }) {
 	const [editingId, setEditingId] = useState(null);
 
+	const fields = [
+		{ key: 'school', type: 'text', placeholder: 'School Name' },
+		{ key: 'year', type: 'number', placeholder: 'Number of Years' },
+		{ key: 'cert', type: 'text', placeholder: 'Degree/Cert' },
+	];
+
 	function deleteListItem(id, arr) {
 		const filteredArray = arr.filter((el) => el.id !== id);
 		setSchoolArray(filteredArray);
@@ -34,54 +40,28 @@ export default function Education({
 					<li key={s.id} className="list-none mt-2">
 						{editingId === s.id ? (
 							<div className="flex flex-col">
-								<input
-									type="text"
-									value={s.school}
-									placeholder="School Name"
-									onChange={(e) => {
-										setSchoolArray((prev) => {
-											return prev.map((item) => {
-												if (item.id === editingId) {
-													return { ...item, school: e.target.value };
-												} else {
-													return item;
-												}
-											});
-										});
-									}}
-								/>
-								<input
-									type="number"
-									value={s.year}
-									placeholder="Number of Years"
-									onChange={(e) => {
-										setSchoolArray((prev) => {
-											return prev.map((item) => {
-												if (item.id === editingId) {
-													return { ...item, year: e.target.value };
-												} else {
-													return item;
-												}
-											});
-										});
-									}}
-								/>
-								<input
-									type="text"
-									value={s.cert}
-									placeholder="Degree/Cert"
-									onChange={(e) => {
-										setSchoolArray((prev) => {
-											return prev.map((item) => {
-												if (item.id === editingId) {
-													return { ...item, cert: e.target.value };
-												} else {
-													return item;
-												}
-											});
-										});
-									}}
-								/>
+								{fields.map((field) => {
+									return (
+										<input
+											key={field.key}
+											type={field.type}
+											value={s[field.key]}
+											placeholder={field.placeholder}
+											onChange={(e) => {
+												setSchoolArray((prev) => {
+													return prev.map((item) => {
+														if (item.id === editingId) {
+															return { ...item, [field.key]: e.target.value };
+														} else {
+															return item;
+														}
+													});
+												});
+											}}
+										/>
+									);
+								})}
+
 								<button
 									className="w-[80px] h-[30px] hover:bg-green-700 hover:text-white text-green-500 font-bold rounded border"
 									onClick={(e) => {
