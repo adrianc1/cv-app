@@ -40,7 +40,12 @@ export default function App() {
 
 	function handleAddJob(e) {
 		e.preventDefault();
-		const newJob = { company: companyName, job: jobTitle, year: jobYears };
+		const newJob = {
+			id: generateUniqueId(),
+			company: companyName,
+			job: jobTitle,
+			year: jobYears,
+		};
 		setJobArray((j) => [...j, newJob]);
 		setCompanyName('');
 		setJobYears('');
@@ -151,6 +156,8 @@ export default function App() {
 						companyName={companyName}
 						jobTitle={jobTitle}
 						jobYears={jobYears}
+						jobArray={jobArray}
+						setJobArray={setJobArray}
 						handleAddJob={handleAddJob}
 						handleCompanyChange={handleCompanyChange}
 						handleJobYearsChange={handleJobYearsChange}

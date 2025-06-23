@@ -138,7 +138,7 @@ export default function Education({
 					);
 				})}
 				<button
-					className="w-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 rounded-full mx-auto mt-2"
+					className="w-1/4 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-full mx-auto mt-2"
 					onClick={handleAddSchool}
 				>
 					{' '}
