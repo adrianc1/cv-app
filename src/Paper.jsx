@@ -15,8 +15,13 @@ export default function Paper({ name, email, phone, education, jobs }) {
 				{education.map((ed) => {
 					return (
 						<li key={ed.id} className="mt-2">
-							{ed.school} - {ed.cert} - {ed.startDate.replace(/-/g, '/')} -{' '}
-							{ed.endDate.replace(/-/g, '/')}
+							<h4 className="">{ed.school} </h4>
+							<span className="text-xs">
+								{ed.startDate.replace(/-/g, '/')} -{' '}
+								{ed.endDate.replace(/-/g, '/')}
+							</span>
+							<br />
+							<span className="text-md">{ed.cert}</span>
 						</li>
 					);
 				})}
@@ -29,7 +34,7 @@ export default function Paper({ name, email, phone, education, jobs }) {
 						<li key={index} className="">
 							{' '}
 							{job.company} <br />
-							<h4 className="italic">{job.job}</h4> <br />
+							<h4 className="italic">{job.job}</h4>
 							{job.startDate.replace(/-/g, '/')}
 							{' - '}
 							{job.endDate.replace(/-/g, '/')}
