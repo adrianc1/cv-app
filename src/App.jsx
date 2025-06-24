@@ -20,93 +20,67 @@ export default function App() {
 	const [name, setName] = useState({ firstName: '', lastName: '' });
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
-	const [schoolArray, setSchoolArray] = useState([]);
-	const [schoolName, setSchoolName] = useState('');
-	const [schoolYear, setSchoolYear] = useState('');
-	const [degree, setDegree] = useState('');
+	const [jobForm, setJobForm] = useState({
+		company: '',
+		job: '',
+		description: '',
+		startDate: '',
+		endDate: '',
+	});
 	const [jobArray, setJobArray] = useState([]);
-	const [companyName, setCompanyName] = useState('');
-	const [jobTitle, setJobTitle] = useState('');
-	const [jobDescription, setJobDescription] = useState('');
-	const [startDateState, setStartDateState] = useState(null);
-	const [endDateState, setEndDateState] = useState(null);
-	const [educationStartDate, setEducationStartDate] = useState(null);
-	const [educationEndDate, setEducationEndDate] = useState('');
+	const [schoolForm, setSchoolForm] = useState({
+		school: '',
+		cert: '',
+		startDate: '',
+		endDate: '',
+	});
 
-	function generateUniqueId() {
-		return crypto.randomUUID();
+	const [schoolArray, setSchoolArray] = useState([]);
+
+	function handleJobFormChange(e) {
+		const { name, value } = e.target;
+		setJobForm((prev) => ({ ...prev, [name]: value }));
+	}
+
+	function handleSchoolFormChange(e) {
+		const { name, value } = e.target;
+		setSchoolForm((prev) => ({ ...prev, [name]: value }));
 	}
 
 	function handleAddJob(e) {
 		e.preventDefault();
 		const newJob = {
-			id: generateUniqueId(),
-			company: companyName,
-			job: jobTitle,
-			description: jobDescription,
-			startDate: startDateState,
-			endDate: endDateState,
+			id: crypto.randomUUID(),
+			...jobForm,
 		};
-		setJobArray((j) => [...j, newJob]);
-		setCompanyName('');
-		setJobTitle('');
-		setStartDateState('');
-		setEndDateState('');
-	}
+		setJobArray((prev) => [...prev, newJob]);
 
-	function handleCompanyChange(e) {
-		setCompanyName(e.target.value);
-	}
-	function handleStartDate(e) {
-		setStartDateState(e.target.value);
-	}
-
-	function handleEndDate(e) {
-		setEndDateState(e.target.value);
-	}
-	function handleJobTitleChange(e) {
-		setJobTitle(e.target.value);
-	}
-
-	function handleJobDescriptionChange(e) {
-		setJobDescription(e.target.value);
+		// Clear the form
+		setJobForm({
+			id: '',
+			company: '',
+			job: '',
+			description: '',
+			startDate: '',
+			endDate: '',
+		});
 	}
 
 	function handleAddSchool(e) {
 		e.preventDefault();
 		const newSchool = {
-			id: generateUniqueId(),
-			school: schoolName,
-			cert: degree,
-			startDate: educationStartDate,
-			endDate: educationEndDate,
+			id: crypto.randomUUID(),
+			...schoolForm,
 		};
-		setSchoolArray((s) => [...s, newSchool]);
-		setSchoolName('');
-		setSchoolYear('');
-		setDegree('');
-		setEducationStartDate('');
-		setEducationEndDate('');
-	}
+		setSchoolArray((prev) => [...prev, newSchool]);
 
-	function handleEducationStartDate(e) {
-		setEducationStartDate(e.target.value);
-	}
-
-	function handleEducationEndDate(e) {
-		setEducationEndDate(e.target.value);
-	}
-
-	function handleSchoolNameChange(e) {
-		setSchoolName(e.target.value);
-	}
-
-	function handleDegreeChange(e) {
-		setDegree(e.target.value);
-	}
-
-	function handleYearsChange(e) {
-		setSchoolYear(e.target.value);
+		// Clear the form
+		setSchoolForm({
+			school: '',
+			cert: '',
+			startDate: '',
+			endDate: '',
+		});
 	}
 
 	function handlePhoneChange(e) {
@@ -144,34 +118,18 @@ export default function App() {
 					<Education
 						schoolArray={schoolArray}
 						setSchoolArray={setSchoolArray}
-						schoolName={schoolName}
-						schoolYear={schoolYear}
-						degree={degree}
-						handleSchoolNameChange={handleSchoolNameChange}
-						handleDegreeChange={handleDegreeChange}
-						handleYearsChange={handleYearsChange}
+						handleSchoolFormChange={handleSchoolFormChange}
 						handleAddSchool={handleAddSchool}
-						handleEducationStartDate={handleEducationStartDate}
-						handleEducationEndDate={handleEducationEndDate}
 					/>
 				</div>
 
 				<div className="general-info flex flex-col w-2/3 gap-2">
 					<h2>Professional Experience</h2>
 					<Professional
-						companyName={companyName}
-						jobTitle={jobTitle}
 						jobArray={jobArray}
 						setJobArray={setJobArray}
 						handleAddJob={handleAddJob}
-						handleCompanyChange={handleCompanyChange}
-						handleJobTitleChange={handleJobTitleChange}
-						handleStartDate={handleStartDate}
-						handleEndDate={handleEndDate}
-						handleJobDescriptionChange={handleJobDescriptionChange}
-						jobDescription={jobDescription}
-						startDateState={startDateState}
-						endDateState={endDateState}
+						handleJobFormChange={handleJobFormChange}
 					/>
 				</div>
 			</Form>

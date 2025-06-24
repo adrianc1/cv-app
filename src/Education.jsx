@@ -3,49 +3,16 @@ import { useState } from 'react';
 export default function Education({
 	schoolArray,
 	setSchoolArray,
-	schoolName,
-	schoolYear,
-	degree,
+	handleSchoolFormChange,
 	handleAddSchool,
-	handleSchoolNameChange,
-	handleDegreeChange,
-	handleYearsChange,
-	educationStartDate,
-	educationEndDate,
-	handleEducationStartDate,
-	handleEducationEndDate,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
 	const fields = [
-		{
-			key: 'school',
-			name: schoolName,
-			type: 'text',
-			placeholder: 'School Name',
-			onChange: handleSchoolNameChange,
-		},
-		{
-			key: 'startDate',
-			name: educationStartDate,
-			type: 'date',
-			placeholder: 'Start Date',
-			onChange: handleEducationStartDate,
-		},
-		{
-			key: 'endDate',
-			name: educationEndDate,
-			type: 'date',
-			placeholder: 'End Date',
-			onChange: handleEducationEndDate,
-		},
-		{
-			key: 'cert',
-			name: degree,
-			type: 'text',
-			placeholder: 'Degree/Cert',
-			onChange: handleDegreeChange,
-		},
+		{ name: 'school', placeholder: 'School Name', type: 'text' },
+		{ name: 'cert', placeholder: 'Degree/Cert', type: 'text' },
+		{ name: 'startDate', placeholder: 'Start Date', type: 'date' },
+		{ name: 'endDate', placeholder: 'End Date', type: 'date' },
 	];
 
 	function deleteListItem(id, arr) {
@@ -72,15 +39,15 @@ export default function Education({
 								{fields.map((field) => {
 									return (
 										<input
-											key={field.key}
+											key={field.name}
 											type={field.type}
-											value={s[field.key]}
+											value={s[field.name]}
 											placeholder={field.placeholder}
 											onChange={(e) => {
 												setSchoolArray((prev) => {
 													return prev.map((item) => {
 														if (item.id === editingId) {
-															return { ...item, [field.key]: e.target.value };
+															return { ...item, [field.name]: e.target.value };
 														} else {
 															return item;
 														}
@@ -137,17 +104,16 @@ export default function Education({
 
 			{/* Add new school to the array */}
 			<div className="flex flex-col gap-2 mt-2">
-				{fields.map((field) => {
-					return (
-						<input
-							key={field.key}
-							type={field.type}
-							value={field.name}
-							placeholder={field.placeholder}
-							onChange={field.onChange}
-						/>
-					);
-				})}
+				{fields.map((field) => (
+					<input
+						key={field.name}
+						name={field.name}
+						type={field.type}
+						placeholder={field.placeholder}
+						value={schoolArray[field.name]}
+						onChange={handleSchoolFormChange}
+					/>
+				))}
 				<button
 					className="w-1/4 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-full mx-auto mt-2"
 					onClick={handleAddSchool}

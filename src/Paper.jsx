@@ -17,8 +17,7 @@ export default function Paper({ name, email, phone, education, jobs }) {
 						<li key={ed.id} className="mt-2">
 							<h4 className="">{ed.school} </h4>
 							<span className="text-xs">
-								{ed.startDate.replace(/-/g, '/')} -{' '}
-								{ed.endDate.replace(/-/g, '/')}
+								{ed.startDate} - {ed.endDate}
 							</span>
 							<br />
 							<span className="text-md">{ed.cert}</span>

@@ -1,58 +1,19 @@
 import { useState } from 'react';
 
 export default function Professional({
-	companyName,
-	jobTitle,
-	jobDescription,
 	jobArray,
 	setJobArray,
-	handleCompanyChange,
-	handleJobTitleChange,
-	handleEndDate,
-	handleStartDate,
 	handleAddJob,
-	startDateState,
-	endDateState,
-	handleJobDescriptionChange,
+	handleJobFormChange,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
 	const fields = [
-		{
-			key: 'company',
-			name: companyName,
-			type: 'text',
-			placeholder: 'Company name',
-			onChange: handleCompanyChange,
-		},
-		{
-			key: 'startDate',
-			name: startDateState,
-			type: 'date',
-			placeholder: 'Start Date',
-			onChange: handleStartDate,
-		},
-		{
-			key: 'endDate',
-			name: endDateState,
-			type: 'date',
-			placeholder: 'End Date',
-			onChange: handleEndDate,
-		},
-		{
-			key: 'job',
-			name: jobTitle,
-			type: 'text',
-			placeholder: 'Job Title',
-			onChange: handleJobTitleChange,
-		},
-		{
-			key: 'description',
-			name: jobDescription,
-			type: 'text',
-			placeholder: 'Job Description',
-			onChange: handleJobDescriptionChange,
-		},
+		{ name: 'company', placeholder: 'Company Name', type: 'text' },
+		{ name: 'job', placeholder: 'Job Title', type: 'text' },
+		{ name: 'startDate', placeholder: 'Start Date', type: 'date' },
+		{ name: 'endDate', placeholder: 'End Date', type: 'date' },
+		{ name: 'description', placeholder: 'Description', type: 'text' },
 	];
 
 	function startEditing(id) {
@@ -78,9 +39,9 @@ export default function Professional({
 								{fields.map((field) => {
 									return (
 										<input
-											key={field.key}
+											key={field.name}
 											type={field.type}
-											value={j[field.key]}
+											value={j[field.name]}
 											placeholder={field.placeholder}
 											onChange={(e) => {
 												setJobArray((prev) => {
@@ -88,7 +49,7 @@ export default function Professional({
 														if (item.id === editingId) {
 															return {
 																...item,
-																[field.key]: e.target.value,
+																[field.name]: e.target.value,
 															};
 														} else {
 															return item;
@@ -147,16 +108,16 @@ export default function Professional({
 
 			{/* Add New Job Inputs */}
 			<div className="w-full flex flex-col gap-2">
-				{fields.map((field) => {
-					return (
-						<input
-							type={field.type}
-							value={field.name}
-							placeholder={field.placeholder}
-							onChange={field.onChange}
-						/>
-					);
-				})}
+				{fields.map((field) => (
+					<input
+						key={field.name}
+						name={field.name}
+						type={field.type}
+						placeholder={field.placeholder}
+						value={jobArray[field.name]}
+						onChange={handleJobFormChange}
+					/>
+				))}
 				<button
 					className=" w-1/4 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-full text-center mx-auto"
 					onClick={handleAddJob}
