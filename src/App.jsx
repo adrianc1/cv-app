@@ -55,7 +55,6 @@ export default function App() {
 		};
 		setJobArray((prev) => [...prev, newJob]);
 
-		// Clear the form
 		setJobForm({
 			id: '',
 			company: '',
@@ -74,7 +73,6 @@ export default function App() {
 		};
 		setSchoolArray((prev) => [...prev, newSchool]);
 
-		// Clear the form
 		setSchoolForm({
 			school: '',
 			cert: '',
@@ -117,6 +115,7 @@ export default function App() {
 
 					<Education
 						schoolArray={schoolArray}
+						schoolForm={schoolForm}
 						setSchoolArray={setSchoolArray}
 						handleSchoolFormChange={handleSchoolFormChange}
 						handleAddSchool={handleAddSchool}
@@ -130,6 +129,7 @@ export default function App() {
 						setJobArray={setJobArray}
 						handleAddJob={handleAddJob}
 						handleJobFormChange={handleJobFormChange}
+						jobForm={jobForm}
 					/>
 				</div>
 			</Form>

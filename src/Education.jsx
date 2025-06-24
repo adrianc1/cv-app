@@ -5,6 +5,7 @@ export default function Education({
 	setSchoolArray,
 	handleSchoolFormChange,
 	handleAddSchool,
+	schoolForm,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
@@ -110,7 +111,7 @@ export default function Education({
 						name={field.name}
 						type={field.type}
 						placeholder={field.placeholder}
-						value={schoolArray[field.name]}
+						value={schoolForm[field.name]}
 						onChange={handleSchoolFormChange}
 					/>
 				))}

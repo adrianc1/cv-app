@@ -3,6 +3,7 @@ import { useState } from 'react';
 export default function Professional({
 	jobArray,
 	setJobArray,
+	jobForm,
 	handleAddJob,
 	handleJobFormChange,
 }) {
@@ -114,7 +115,7 @@ export default function Professional({
 						name={field.name}
 						type={field.type}
 						placeholder={field.placeholder}
-						value={jobArray[field.name]}
+						value={jobForm[field.name]}
 						onChange={handleJobFormChange}
 					/>
 				))}
