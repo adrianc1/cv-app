@@ -10,6 +10,10 @@ export default function Education({
 	handleSchoolNameChange,
 	handleDegreeChange,
 	handleYearsChange,
+	educationStartDate,
+	educationEndDate,
+	handleEducationStartDate,
+	handleEducationEndDate,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
@@ -22,11 +26,18 @@ export default function Education({
 			onChange: handleSchoolNameChange,
 		},
 		{
-			key: 'year',
-			name: schoolYear,
-			type: 'number',
-			placeholder: 'Number of Years',
-			onChange: handleYearsChange,
+			key: 'startDate',
+			name: educationStartDate,
+			type: 'date',
+			placeholder: 'Start Date',
+			onChange: handleEducationStartDate,
+		},
+		{
+			key: 'endDate',
+			name: educationEndDate,
+			type: 'date',
+			placeholder: 'End Date',
+			onChange: handleEducationEndDate,
 		},
 		{
 			key: 'cert',
@@ -94,7 +105,7 @@ export default function Education({
 						) : (
 							<div className="flex items-center justify-between w-full gap-4 border border-gray-500 p-2">
 								<p className="flex-grow min-w-0 overflow-hidden break-words">
-									{s.school} - {s.cert} - {s.year} years
+									{s.school} {s.cert} {s.startDate} - {s.endDate}
 								</p>
 
 								<div className="flex gap-2 flex-shrink-0">

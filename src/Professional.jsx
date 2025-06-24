@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function Professional({
 	companyName,
 	jobTitle,
-	jobYears,
+	jobDescription,
 	jobArray,
 	setJobArray,
 	handleCompanyChange,
@@ -13,6 +13,7 @@ export default function Professional({
 	handleAddJob,
 	startDateState,
 	endDateState,
+	handleJobDescriptionChange,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
@@ -44,6 +45,13 @@ export default function Professional({
 			type: 'text',
 			placeholder: 'Job Title',
 			onChange: handleJobTitleChange,
+		},
+		{
+			key: 'description',
+			name: jobDescription,
+			type: 'text',
+			placeholder: 'Job Description',
+			onChange: handleJobDescriptionChange,
 		},
 	];
 

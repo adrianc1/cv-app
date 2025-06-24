@@ -27,8 +27,11 @@ export default function App() {
 	const [jobArray, setJobArray] = useState([]);
 	const [companyName, setCompanyName] = useState('');
 	const [jobTitle, setJobTitle] = useState('');
+	const [jobDescription, setJobDescription] = useState('');
 	const [startDateState, setStartDateState] = useState(null);
 	const [endDateState, setEndDateState] = useState(null);
+	const [educationStartDate, setEducationStartDate] = useState(null);
+	const [educationEndDate, setEducationEndDate] = useState('');
 
 	function generateUniqueId() {
 		return crypto.randomUUID();
@@ -40,6 +43,7 @@ export default function App() {
 			id: generateUniqueId(),
 			company: companyName,
 			job: jobTitle,
+			description: jobDescription,
 			startDate: startDateState,
 			endDate: endDateState,
 		};
@@ -64,18 +68,33 @@ export default function App() {
 		setJobTitle(e.target.value);
 	}
 
+	function handleJobDescriptionChange(e) {
+		setJobDescription(e.target.value);
+	}
+
 	function handleAddSchool(e) {
 		e.preventDefault();
 		const newSchool = {
 			id: generateUniqueId(),
 			school: schoolName,
 			cert: degree,
-			year: schoolYear,
+			startDate: educationStartDate,
+			endDate: educationEndDate,
 		};
 		setSchoolArray((s) => [...s, newSchool]);
 		setSchoolName('');
 		setSchoolYear('');
 		setDegree('');
+		setEducationStartDate('');
+		setEducationEndDate('');
+	}
+
+	function handleEducationStartDate(e) {
+		setEducationStartDate(e.target.value);
+	}
+
+	function handleEducationEndDate(e) {
+		setEducationEndDate(e.target.value);
 	}
 
 	function handleSchoolNameChange(e) {
@@ -106,7 +125,7 @@ export default function App() {
 	}
 
 	return (
-		<div className="flex w-full">
+		<div className="flex w-full ">
 			<Form>
 				<div className="general-info flex flex-col w-2/3 gap-2 ">
 					<h2>General Information</h2>
@@ -132,6 +151,8 @@ export default function App() {
 						handleDegreeChange={handleDegreeChange}
 						handleYearsChange={handleYearsChange}
 						handleAddSchool={handleAddSchool}
+						handleEducationStartDate={handleEducationStartDate}
+						handleEducationEndDate={handleEducationEndDate}
 					/>
 				</div>
 
@@ -147,6 +168,8 @@ export default function App() {
 						handleJobTitleChange={handleJobTitleChange}
 						handleStartDate={handleStartDate}
 						handleEndDate={handleEndDate}
+						handleJobDescriptionChange={handleJobDescriptionChange}
+						jobDescription={jobDescription}
 						startDateState={startDateState}
 						endDateState={endDateState}
 					/>
