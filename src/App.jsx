@@ -27,14 +27,10 @@ export default function App() {
 	const [jobArray, setJobArray] = useState([]);
 	const [companyName, setCompanyName] = useState('');
 	const [jobTitle, setJobTitle] = useState('');
-	const [jobYears, setJobYears] = useState('');
-	const [isEditingID, setIsEditingID] = useState(null);
-	const [isEditing, setIsEditing] = useState(null);
-
-	const [editedText, setEditedText] = useState('');
+	const [startDateState, setStartDateState] = useState(null);
+	const [endDateState, setEndDateState] = useState(null);
 
 	function generateUniqueId() {
-		// This uses the Web Crypto API, available in modern browsers.
 		return crypto.randomUUID();
 	}
 
@@ -44,19 +40,25 @@ export default function App() {
 			id: generateUniqueId(),
 			company: companyName,
 			job: jobTitle,
-			year: jobYears,
+			startDate: startDateState,
+			endDate: endDateState,
 		};
 		setJobArray((j) => [...j, newJob]);
 		setCompanyName('');
-		setJobYears('');
 		setJobTitle('');
+		setStartDateState('');
+		setEndDateState('');
 	}
 
 	function handleCompanyChange(e) {
 		setCompanyName(e.target.value);
 	}
-	function handleJobYearsChange(e) {
-		setJobYears(e.target.value);
+	function handleStartDate(e) {
+		setStartDateState(e.target.value);
+	}
+
+	function handleEndDate(e) {
+		setEndDateState(e.target.value);
 	}
 	function handleJobTitleChange(e) {
 		setJobTitle(e.target.value);
@@ -103,23 +105,6 @@ export default function App() {
 		setEmail(e.target.value);
 	}
 
-	function editEducationItem() {
-		setIsEditing(true);
-		const text = getDataFromID(schoolArray);
-		setEditedText(text);
-	}
-
-	function getDataFromID(arr) {
-		const DUPE_ARR = [...arr];
-		return DUPE_ARR;
-	}
-
-	useEffect(() => {
-		if (schoolArray.length > 0) {
-			console.log('Updated schoolArray:', schoolArray);
-		}
-	}, [schoolArray]);
-
 	return (
 		<div className="flex w-full">
 			<Form>
@@ -155,13 +140,15 @@ export default function App() {
 					<Professional
 						companyName={companyName}
 						jobTitle={jobTitle}
-						jobYears={jobYears}
 						jobArray={jobArray}
 						setJobArray={setJobArray}
 						handleAddJob={handleAddJob}
 						handleCompanyChange={handleCompanyChange}
-						handleJobYearsChange={handleJobYearsChange}
 						handleJobTitleChange={handleJobTitleChange}
+						handleStartDate={handleStartDate}
+						handleEndDate={handleEndDate}
+						startDateState={startDateState}
+						endDateState={endDateState}
 					/>
 				</div>
 			</Form>

@@ -8,8 +8,11 @@ export default function Professional({
 	setJobArray,
 	handleCompanyChange,
 	handleJobTitleChange,
-	handleJobYearsChange,
+	handleEndDate,
+	handleStartDate,
 	handleAddJob,
+	startDateState,
+	endDateState,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
@@ -18,15 +21,22 @@ export default function Professional({
 			key: 'company',
 			name: companyName,
 			type: 'text',
-			placeholder: 'company name',
+			placeholder: 'Company name',
 			onChange: handleCompanyChange,
 		},
 		{
-			key: 'year',
-			name: jobYears,
-			type: 'number',
-			placeholder: 'Number of Years',
-			onChange: handleJobYearsChange,
+			key: 'startDate',
+			name: startDateState,
+			type: 'date',
+			placeholder: 'Start Date',
+			onChange: handleStartDate,
+		},
+		{
+			key: 'endDate',
+			name: endDateState,
+			type: 'date',
+			placeholder: 'End Date',
+			onChange: handleEndDate,
 		},
 		{
 			key: 'job',
@@ -54,7 +64,7 @@ export default function Professional({
 			{/* Render list here */}
 			{jobArray.map((j) => {
 				return (
-					<li key={j.id} className="list-none mt-2">
+					<li key={j.id} className="list-none my-2">
 						{editingId === j.id ? (
 							<div className="flex flex-col gap-2">
 								{fields.map((field) => {
@@ -68,7 +78,10 @@ export default function Professional({
 												setJobArray((prev) => {
 													return prev.map((item) => {
 														if (item.id === editingId) {
-															return { ...item, [field.key]: e.target.value };
+															return {
+																...item,
+																[field.key]: e.target.value,
+															};
 														} else {
 															return item;
 														}
@@ -80,7 +93,7 @@ export default function Professional({
 								})}
 
 								<button
-									className="w-[80px] h-[30px] hover:bg-green-700 hover:text-white text-green-500 font-bold rounded border"
+									className="w-[80px] h-[30px] hover:bg-green-700 hover:text-white text-green-500 font-bold rounded border mb-4"
 									onClick={(e) => {
 										e.preventDefault();
 										stopEditing();
@@ -93,7 +106,8 @@ export default function Professional({
 						) : (
 							<div className="flex items-center justify-between w-full gap-4 border border-gray-500 p-2">
 								<p className="flex-grow min-w-0 overflow-hidden break-words">
-									{j.company} - {j.job} - {j.year} years
+									{j.company} {j.job} {j.startDate.replace(/-/g, '/')} -{' '}
+									{j.endDate.replace(/-/g, '/')}
 								</p>
 
 								<div className="flex gap-2 flex-shrink-0">
@@ -122,6 +136,8 @@ export default function Professional({
 					</li>
 				);
 			})}
+
+			{/* Add New Job Inputs */}
 			<div className="w-full flex flex-col gap-2">
 				{fields.map((field) => {
 					return (

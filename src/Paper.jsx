@@ -25,7 +25,11 @@ export default function Paper({ name, email, phone, education, jobs }) {
 					return (
 						<li key={index}>
 							{' '}
-							{job.company} {job.job} {job.year}{' '}
+							{job.company} <br />
+							{job.job} <br />
+							{job.startDate.replace(/-/g, '/')}
+							{' - '}
+							{job.endDate.replace(/-/g, '/')}{' '}
 						</li>
 					);
 				})}
