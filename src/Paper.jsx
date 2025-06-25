@@ -5,7 +5,7 @@ export default function Paper({ name, email, phone, education, jobs }) {
 				<h2 className="text-4xl text-center">
 					{name.firstName} {name.lastName}
 				</h2>
-				<div className="contact-info flex w-full justify-center gap-4">
+				<div className="contact-info flex justify-center gap-4 border-b-1 border-indigo-400 w-[90%] mx-auto pb-2">
 					<p>{email}</p> <p>{phone}</p>
 				</div>
 			</div>
