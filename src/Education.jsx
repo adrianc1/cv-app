@@ -104,7 +104,7 @@ export default function Education({
 			})}
 
 			{/* Add new school to the array */}
-			<div className="flex flex-col gap-2 mt-2">
+			<div className="flex flex-col gap-5 mt-4">
 				{fields.map((field) => (
 					<input
 						key={field.name}
@@ -116,7 +116,7 @@ export default function Education({
 					/>
 				))}
 				<button
-					className="w-1/4 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-full mx-auto mt-2"
+					className="w-1/4 bg-indigo-600	 hover:bg-blue-700 text-white font-bold rounded mx-auto mt-2 py-1"
 					onClick={handleAddSchool}
 				>
 					{' '}

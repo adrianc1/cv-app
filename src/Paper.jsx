@@ -1,6 +1,6 @@
 export default function Paper({ name, email, phone, education, jobs }) {
 	return (
-		<div className="w-full md:w-1/2 h-auto border border-black mr-8 mt-8 rounded shadow-2xl pl-4 pt-4">
+		<div className="w-full h-3/4 md:w-1/2 border border-gray-200 mr-8 mt-8 rounded shadow-2xl pl-4 pt-4">
 			<div className="gen-info w-full text-center">
 				<h2 className="text-4xl text-center">
 					{name.firstName} {name.lastName}
@@ -14,13 +14,15 @@ export default function Paper({ name, email, phone, education, jobs }) {
 			<ul className="my-2">
 				{education.map((ed) => {
 					return (
-						<li key={ed.id} className="mt-2">
-							<h4 className="">{ed.school} </h4>
+						<li key={ed.id} className="my-4">
+							<p className="">
+								{ed.school} - {ed.cert}{' '}
+							</p>
 							<span className="text-xs">
-								{ed.startDate} - {ed.endDate}
+								{ed.startDate.replace(/-/g, '/')} -{' '}
+								{ed.endDate.replace(/-/g, '/')}
 							</span>
 							<br />
-							<span className="text-md">{ed.cert}</span>
 						</li>
 					);
 				})}
@@ -30,7 +32,7 @@ export default function Paper({ name, email, phone, education, jobs }) {
 			<ul>
 				{jobs.map((job, index) => {
 					return (
-						<li key={index} className="">
+						<li key={index} className="my-4">
 							{' '}
 							{job.company} <br />
 							<h4 className="italic">{job.job}</h4>

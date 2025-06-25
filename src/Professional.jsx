@@ -6,6 +6,7 @@ export default function Professional({
 	jobForm,
 	handleAddJob,
 	handleJobFormChange,
+	handleAddResponsibility,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
@@ -108,7 +109,7 @@ export default function Professional({
 			})}
 
 			{/* Add New Job Inputs */}
-			<div className="w-full flex flex-col gap-2">
+			<div className="w-full flex flex-col gap-5 mt-4">
 				{fields.map((field) => (
 					<input
 						key={field.name}
@@ -119,8 +120,20 @@ export default function Professional({
 						onChange={handleJobFormChange}
 					/>
 				))}
-				<button
+
+				{/* <button
 					className=" w-1/4 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-full text-center mx-auto"
+					onClick={(e) => {
+						e.preventDefault();
+						const des = fields.filter((field) => field.name === 'description');
+						handleAddResponsibility(des);
+					}}
+				>
+					{' '}
+					Add Responsibility
+				</button> */}
+				<button
+					className="w-1/4 bg-indigo-600	 hover:bg-blue-700 text-white font-bold rounded mx-auto mt-2 py-1"
 					onClick={handleAddJob}
 				>
 					{' '}

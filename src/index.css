@@ -1,6 +1,14 @@
 @import 'tailwindcss';
 
+html,
+body,
+#root {
+	height: 100%;
+	background-color: #f9fafb;
+}
+
 input {
 	border-bottom: 1px solid black;
 	border-radius: 4px;
+	padding-left: 4px;
 }
