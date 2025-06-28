@@ -46,6 +46,11 @@ export default function Paper({ name, email, phone, education, jobs }) {
 					})}
 				</ul>
 			</div>
+			<div className="flex justify-end mt-4">
+				<button className="bg-green-400 hover:bg-green-700 text-white rounded py-1 px-4 cursor">
+					Download Resume
+				</button>
+			</div>
 		</div>
 	);
 }

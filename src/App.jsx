@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Name from './Name';
 import Email from './Email';
 import Phone from './Phone';
