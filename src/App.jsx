@@ -109,9 +109,9 @@ export default function App() {
 	}
 
 	return (
-		<div className="flex flex-col md:flex-row md:w-full mx-auto w-9/10 h-auto">
+		<div className="flex flex-col lg:flex-row lg:w-full mx-auto w-9/10 h-auto">
 			<Form>
-				<div className="w-full md:w-1/2 general-info h-auto flex flex-col gap-5 mb-4">
+				<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4">
 					<h2 className="text-2xl font-bold">General Information</h2>
 					<Name
 						name={name}
@@ -120,12 +120,15 @@ export default function App() {
 					/>
 					<Email email={email} handleEmailChange={handleEmailChange} />
 					<Phone phone={phone} handlePhoneChange={handlePhoneChange} />
-					<button className="w-1/3 bg-indigo-600 hover:bg-blue-700 text-white rounded mx-auto mt-2 py-1">
+					<button
+						className="w-1/3 bg-indigo-600 hover:bg-blue-700 text-white rounded mx-auto mt-2 py-1"
+						onClick={(e) => e.preventDefault()}
+					>
 						Save Info
 					</button>
 				</div>
 
-				<div className="general-info w-full md:w-1/2 flex flex-col my-8">
+				<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
 					<h2 className="text-2xl font-bold">Educational Experience</h2>
 
 					<Education
@@ -137,7 +140,7 @@ export default function App() {
 					/>
 				</div>
 
-				<div className="general-info flex flex-col w-full md:w-1/2 gap-2 my-8">
+				<div className="general-info flex flex-col w-full lg:w-3/4 gap-2 my-8">
 					<h2 className="text-2xl font-bold">Professional Experience</h2>
 					<Professional
 						jobArray={jobArray}
