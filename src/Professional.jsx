@@ -133,7 +133,7 @@ export default function Professional({
 					Add Responsibility
 				</button> */}
 				<button
-					className="w-1/4 bg-indigo-600 hover:bg-blue-700 text-white font-bold rounded mx-auto mt-2 py-1"
+					className="w-1/3 bg-indigo-600 hover:bg-blue-700 text-white font-bold rounded mx-auto mt-2 py-1"
 					onClick={handleAddJob}
 				>
 					{' '}

@@ -12,9 +12,9 @@ function Form({ children }) {
 	return (
 		<form
 			action=""
-			className="flex flex-col pl-4 w-full h-3/4 flex-1 justify-around"
+			className="flex flex-col w-full h-full flex-1 justify-around items-center"
 		>
-			<h1 className="text-4xl my-2">CV/Resume Builder</h1>
+			<h1 className="text-4xl font-bold my-8">CV/Resume Builder</h1>
 			{children}
 		</form>
 	);
@@ -105,9 +105,9 @@ export default function App() {
 	}
 
 	return (
-		<div className="flex w-full h-full ">
+		<div className="flex flex-col mx-auto w-9/10 h-auto">
 			<Form>
-				<div className="general-info h-auto flex flex-col w-2/3 gap-5 mb-4">
+				<div className="w-full general-info h-auto flex flex-col gap-5 mb-4">
 					<h2 className="text-2xl font-bold">General Information</h2>
 					<Name
 						name={name}
@@ -118,7 +118,7 @@ export default function App() {
 					<Phone phone={phone} handlePhoneChange={handlePhoneChange} />
 				</div>
 
-				<div className="general-info flex flex-col w-2/3 mb-4">
+				<div className="general-info w-full flex flex-col my-8">
 					<h2 className="text-2xl font-bold">Educational Experience</h2>
 
 					<Education
@@ -130,7 +130,7 @@ export default function App() {
 					/>
 				</div>
 
-				<div className="general-info flex flex-col w-2/3 gap-2">
+				<div className="general-info flex flex-col w-full gap-2 my-8">
 					<h2 className="text-2xl font-bold">Professional Experience</h2>
 					<Professional
 						jobArray={jobArray}
