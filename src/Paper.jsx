@@ -1,8 +1,8 @@
 export default function Paper({ name, email, phone, education, jobs }) {
 	return (
-		<div className="">
+		<div className="w-full">
 			<h2 className="text-4xl text-center my-4">Resume</h2>
-			<div className="w-full h-3/4 md:w-1/2 border border-gray-200 mr-8 mt-8 rounded shadow-2xl pl-4 pt-4">
+			<div className="w-full h-3/4 border border-gray-200 mr-8 mt-8 rounded shadow-2xl pl-4 pt-4">
 				<div className="gen-info w-full text-center">
 					<h2 className="text-4xl text-center">
 						{name.firstName} {name.lastName}
