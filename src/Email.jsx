@@ -3,7 +3,7 @@ export default function Email({ email, handleEmailChange }) {
 		<>
 			<input
 				type="text"
-				placeholder="email"
+				placeholder="Email"
 				value={email}
 				onChange={handleEmailChange}
 			/>

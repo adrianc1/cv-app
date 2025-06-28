@@ -120,6 +120,9 @@ export default function App() {
 					/>
 					<Email email={email} handleEmailChange={handleEmailChange} />
 					<Phone phone={phone} handlePhoneChange={handlePhoneChange} />
+					<button className="w-1/3 bg-indigo-600 hover:bg-blue-700 text-white rounded mx-auto mt-2 py-1">
+						Save Info
+					</button>
 				</div>
 
 				<div className="general-info w-full md:w-1/2 flex flex-col my-8">

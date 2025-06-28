@@ -3,7 +3,7 @@ export default function Phone({ phone, handlePhoneChange }) {
 		<>
 			<input
 				type="tel"
-				placeholder="phone number"
+				placeholder="Phone Number"
 				value={phone}
 				onChange={handlePhoneChange}
 			/>
