@@ -2,7 +2,7 @@ export default function Paper({ name, email, phone, education, jobs }) {
 	return (
 		<div className="w-full lg:w-1/2 lg:mr-10 lg:mt-2">
 			<h2 className="text-4xl text-center my-4">Resume</h2>
-			<div className="w-full h-[900px] border border-gray-200 mr-8 mt-8 rounded shadow-2xl pl-4 pt-4 ">
+			<div className="w-full h-auto lg:h-[900px] border border-gray-200 mr-8 mt-8 rounded shadow-2xl pl-4 pt-4 ">
 				<div className="gen-info w-full text-center">
 					<h2 className="text-4xl text-center">
 						{name.firstName} {name.lastName}
@@ -48,7 +48,7 @@ export default function Paper({ name, email, phone, education, jobs }) {
 					})}
 				</ul>
 			</div>
-			<div className="flex justify-end mt-4">
+			<div className="flex justify-end my-4">
 				<button className="bg-green-400 hover:bg-green-700 text-white rounded py-1 px-4 cursor">
 					Download Resume
 				</button>
