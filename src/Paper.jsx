@@ -2,7 +2,7 @@ export default function Paper({ name, email, phone, education, jobs }) {
 	return (
 		<div className="w-full lg:w-1/2 lg:mr-10 lg:mt-2">
 			<h2 className="text-4xl text-center my-4">Resume</h2>
-			<div className="w-full h-3/4 border border-gray-200 mr-8 mt-8 rounded shadow-2xl pl-4 pt-4">
+			<div className="w-full h-[900px] border border-gray-200 mr-8 mt-8 rounded shadow-2xl pl-4 pt-4 ">
 				<div className="gen-info w-full text-center">
 					<h2 className="text-4xl text-center">
 						{name.firstName} {name.lastName}
@@ -11,7 +11,7 @@ export default function Paper({ name, email, phone, education, jobs }) {
 						<p>{email}</p> <p>{phone}</p>
 					</div>
 				</div>
-				<h3 className="text-2xl px-4">Education</h3>
+				<h3 className="text-2xl px-4 mt-4">Education</h3>
 				<ul className="my-2">
 					{education.map((ed) => {
 						return (
@@ -28,7 +28,7 @@ export default function Paper({ name, email, phone, education, jobs }) {
 						);
 					})}
 				</ul>
-				<h3 className="text-2xl px-4">Professional Experience</h3>
+				<h3 className="text-2xl px-4 mt-4">Professional Experience</h3>
 				<ul>
 					{jobs.map((job, index) => {
 						return (
