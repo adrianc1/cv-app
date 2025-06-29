@@ -7,15 +7,15 @@ export default function Paper({ name, email, phone, education, jobs }) {
 					<h2 className="text-4xl text-center">
 						{name.firstName} {name.lastName}
 					</h2>
-					<div className="contact-info flex justify-center gap-4 border-b-1 border-indigo-400 w-[90%] mx-auto pb-2">
+					<div className="contact-info flex justify-center gap-4 border-b-1 border-indigo-400 w-[80%] mx-auto pb-2">
 						<p>{email}</p> <p>{phone}</p>
 					</div>
 				</div>
-				<h3 className="text-2xl">Education</h3>
+				<h3 className="text-2xl px-4">Education</h3>
 				<ul className="my-2">
 					{education.map((ed) => {
 						return (
-							<li key={ed.id} className="my-4">
+							<li key={ed.id} className="my-4 px-4">
 								<p className="">
 									{ed.school} - {ed.cert}{' '}
 								</p>
@@ -28,19 +28,21 @@ export default function Paper({ name, email, phone, education, jobs }) {
 						);
 					})}
 				</ul>
-				<h3 className="text-2xl">Professional Experience</h3>
+				<h3 className="text-2xl px-4">Professional Experience</h3>
 				<ul>
 					{jobs.map((job, index) => {
 						return (
-							<li key={index} className="my-4">
+							<li key={index} className="my-4 px-4">
 								{' '}
-								{job.company} <br />
+								<h3 className="font-bold">{job.company}</h3>
 								<h4 className="italic">{job.job}</h4>
-								{job.startDate.replace(/-/g, '/')}
-								{' - '}
-								{job.endDate.replace(/-/g, '/')}
+								<span className="text-xs">
+									{job.startDate.replace(/-/g, '/')}
+									{' - '}
+									{job.endDate.replace(/-/g, '/')}
+								</span>
 								<br />
-								{job.description}
+								<div className="mt-2">{job.description}</div>
 							</li>
 						);
 					})}
