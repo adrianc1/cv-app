@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Name from './Name';
 import Email from './Email';
 import Phone from './Phone';
@@ -6,7 +6,7 @@ import Paper from './Paper';
 import Education from './Education';
 import Professional from './Professional';
 import resumeLogo from './resumelogo.png';
-
+import Skills from './Skills';
 import './App.css';
 
 function Form({ children }) {
@@ -44,6 +44,8 @@ export default function App() {
 	});
 
 	const [schoolArray, setSchoolArray] = useState([]);
+	const [skill, setSkill] = useState('');
+	const [skillsArray, setSkillsArray] = useState([]);
 
 	function handleJobFormChange(e) {
 		const { name, value } = e.target;
@@ -57,6 +59,20 @@ export default function App() {
 
 	function handleAddResponsibility(d) {
 		console.log(d);
+	}
+
+	function handleSkillInputChange(e) {
+		setSkill(e.target.value);
+	}
+
+	function handleAddSkill(e) {
+		e.preventDefault();
+		const newSkill = {
+			id: crypto.randomUUID(),
+			skill,
+		};
+		setSkillsArray((prev) => [...prev, newSkill]);
+		setSkill('');
 	}
 
 	function handleAddJob(e) {
@@ -74,7 +90,6 @@ export default function App() {
 			startDate: '',
 			endDate: '',
 		});
-		console.log(jobArray);
 	}
 
 	function handleAddSchool(e) {
@@ -111,7 +126,7 @@ export default function App() {
 	return (
 		<div className="flex flex-col lg:flex-row lg:w-full mx-auto w-9/10 h-auto">
 			<Form>
-				<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4 mt-4">
+				<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4 mt-8">
 					<h2 className="text-2xl font-bold">General Information</h2>
 					<Name
 						name={name}
@@ -150,6 +165,17 @@ export default function App() {
 						handleAddSchool={handleAddSchool}
 					/>
 				</div>
+
+				<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
+					<h2 className="text-2xl font-bold">Skills</h2>
+					<Skills
+						handleSkillInputChange={handleSkillInputChange}
+						handleAddSkill={handleAddSkill}
+						skill={skill}
+						setSkill={setSkill}
+						skillsArray={skillsArray}
+					/>
+				</div>
 			</Form>
 			<Paper
 				name={name}
@@ -157,6 +183,7 @@ export default function App() {
 				phone={phone}
 				education={schoolArray}
 				jobs={jobArray}
+				skills={skillsArray}
 			/>
 		</div>
 	);
