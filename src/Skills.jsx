@@ -2,16 +2,16 @@ import { useState } from 'react';
 
 export default function Skills({
 	skillsArray,
+	setSkillsArray,
 	handleSkillInputChange,
 	handleAddSkill,
 	skill,
-	setSkill,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
 	function deleteListItem(id, arr) {
 		const filteredArray = arr.filter((el) => el.id !== id);
-		setSchoolArray(filteredArray);
+		setSkillsArray(filteredArray);
 	}
 
 	function startEditing(id) {

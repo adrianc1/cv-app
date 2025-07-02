@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Name from './Name';
 import Email from './Email';
 import Phone from './Phone';
@@ -173,6 +173,7 @@ export default function App() {
 						handleAddSkill={handleAddSkill}
 						skill={skill}
 						setSkill={setSkill}
+						setSkillsArray={setSkillsArray}
 						skillsArray={skillsArray}
 					/>
 				</div>
