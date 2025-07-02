@@ -4,8 +4,8 @@ export default function Paper({ name, email, phone, education, jobs }) {
 			<h2 className="text-4xl text-center my-4">Resume</h2>
 
 			{/* This wrapper controls width and scale for both paper and button */}
-			<div className="w-[816px] transform scale-100 md:scale-90 sm:scale-75 xs:scale-[.65]">
-				<div className="h-[1056px] border border-gray-200 mt-8 rounded shadow-2xl pl-4 pt-4">
+			<div className="w-[816px] mx-auto transform scale-100 md:scale-90 sm:scale-75 xs:scale-[.65]">
+				<div className="h-[1056px] border border-gray-200 mt-8 lg:mt-0 rounded shadow-2xl pl-4 pt-4">
 					<div className="gen-info w-full text-center">
 						<h2 className="text-4xl text-center">
 							{name.firstName} {name.lastName}

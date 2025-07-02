@@ -111,7 +111,7 @@ export default function App() {
 	return (
 		<div className="flex flex-col lg:flex-row lg:w-full mx-auto w-9/10 h-auto">
 			<Form>
-				<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4">
+				<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4 mt-4">
 					<h2 className="text-2xl font-bold">General Information</h2>
 					<Name
 						name={name}
@@ -127,6 +127,17 @@ export default function App() {
 						Save Info
 					</button>
 				</div>
+				<div className="general-info flex flex-col w-full lg:w-3/4 gap-2 my-8">
+					<h2 className="text-2xl font-bold">Professional Experience</h2>
+					<Professional
+						jobArray={jobArray}
+						setJobArray={setJobArray}
+						handleAddJob={handleAddJob}
+						handleJobFormChange={handleJobFormChange}
+						jobForm={jobForm}
+						handleAddResponsibility={handleAddResponsibility}
+					/>
+				</div>
 
 				<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
 					<h2 className="text-2xl font-bold">Educational Experience</h2>
@@ -137,18 +148,6 @@ export default function App() {
 						setSchoolArray={setSchoolArray}
 						handleSchoolFormChange={handleSchoolFormChange}
 						handleAddSchool={handleAddSchool}
-					/>
-				</div>
-
-				<div className="general-info flex flex-col w-full lg:w-3/4 gap-2 my-8">
-					<h2 className="text-2xl font-bold">Professional Experience</h2>
-					<Professional
-						jobArray={jobArray}
-						setJobArray={setJobArray}
-						handleAddJob={handleAddJob}
-						handleJobFormChange={handleJobFormChange}
-						jobForm={jobForm}
-						handleAddResponsibility={handleAddResponsibility}
 					/>
 				</div>
 			</Form>
