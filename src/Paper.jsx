@@ -1,4 +1,4 @@
-export default function Paper({ name, email, phone, education, jobs }) {
+export default function Paper({ name, email, phone, education, jobs, skills }) {
 	return (
 		<div className="flex flex-col overflow-x-auto">
 			<h2 className="text-4xl text-center my-4">Resume</h2>
@@ -43,6 +43,16 @@ export default function Paper({ name, email, phone, education, jobs }) {
 								<div className="mt-2">{job.description}</div>
 							</li>
 						))}
+					</ul>
+					<h3 className="text-2xl px-4 mt-4">Skills</h3>
+					<ul>
+						{skills.map((skill) => {
+							return (
+								<li key={skill.id} className="my-3 px-4">
+									{skill.skill}
+								</li>
+							);
+						})}
 					</ul>
 				</div>
 
