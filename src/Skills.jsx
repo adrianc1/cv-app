@@ -24,13 +24,43 @@ export default function Skills({
 
 	return (
 		<div className="w-full flex flex-col ">
-			{skillsArray.map((s, skillIndex) => {
+			{skillsArray.map((item) => {
 				return (
-					<li key={skillIndex} className="list-none mt-2">
-						{editingId === skillIndex ? null : ( //
+					<li key={item.id} className="list-none mt-2">
+						{editingId === item.id ? (
+							<div className="flex flex-col gap-2">
+								<input
+									type="text"
+									value={item.skill}
+									placeholder="hey"
+									onChange={(e) => {
+										setSkillsArray((prev) => {
+											return prev.map((item) => {
+												if (item.id === editingId) {
+													return { ...item, skill: e.target.value };
+												} else {
+													return item;
+												}
+											});
+										});
+									}}
+								/>
+
+								<button
+									className="w-[80px] h-[30px] hover:bg-green-700 hover:text-white text-green-500 font-bold rounded border"
+									onClick={(e) => {
+										e.preventDefault();
+										stopEditing();
+									}}
+								>
+									{' '}
+									Done
+								</button>
+							</div>
+						) : (
 							<div className="flex items-center justify-between w-full gap-4 border border-gray-500 p-2">
 								<p className="flex-grow min-w-0 overflow-hidden break-words">
-									{s.skill}
+									{item.skill}
 								</p>
 
 								<div className="flex gap-2 flex-shrink-0">
@@ -38,7 +68,7 @@ export default function Skills({
 										className="w-[80px] h-[30px] hover:bg-blue-700 hover:text-white text-blue-500 font-bold rounded border"
 										onClick={(e) => {
 											e.preventDefault();
-											startEditing(s.id);
+											startEditing(item.id);
 										}}
 									>
 										Edit
@@ -48,7 +78,7 @@ export default function Skills({
 										className="w-[80px] h-[30px] hover:bg-red-700 hover:text-white text-red-500 font-bold rounded border"
 										onClick={(e) => {
 											e.preventDefault();
-											deleteListItem(s.id, skillsArray);
+											deleteListItem(item.id, skillsArray);
 										}}
 									>
 										Delete
