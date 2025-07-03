@@ -18,7 +18,7 @@ function Form({ children }) {
 			<div className="title flex items-center justify-center gap-3">
 				<img src={resumeLogo} alt="" className="w-1/10 h-1/10" />
 				<h1 className="text-3xl font-bold my-8 text-primary">
-					CV/Resume Builder
+					EZ Resume Builder
 				</h1>
 			</div>
 			{children}
@@ -184,7 +184,7 @@ export default function App() {
 				</div>
 
 				<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
-					<h2 className="text-2xl font-bold">Skills</h2>
+					<h2 className="text-2xl font-bold">Skills/Certifications</h2>
 					<Skills
 						handleSkillInputChange={handleSkillInputChange}
 						handleAddSkill={handleAddSkill}

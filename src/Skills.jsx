@@ -65,7 +65,7 @@ export default function Skills({
 				<input
 					type="text"
 					name="skill"
-					placeholder="Skill"
+					placeholder="Skill/Certification"
 					value={skill}
 					onChange={handleSkillInputChange}
 				/>
