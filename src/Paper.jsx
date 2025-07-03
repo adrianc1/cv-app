@@ -40,7 +40,11 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 									{job.startDate.replace(/-/g, '/')} -{' '}
 									{job.endDate.replace(/-/g, '/')}
 								</span>
-								<div className="mt-2">{job.description}</div>
+								<ul className="mt-2">
+									{job.description.map((duty, index) => (
+										<li key={index}>{duty}</li>
+									))}
+								</ul>
 							</li>
 						))}
 					</ul>

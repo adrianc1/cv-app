@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, React } from 'react';
 
 export default function Professional({
 	jobArray,
@@ -77,11 +77,22 @@ export default function Professional({
 							</div>
 						) : (
 							<div className="flex items-center justify-between w-full gap-4 border border-gray-500 p-2">
-								<p className="flex-grow min-w-0 overflow-hidden break-words">
-									{j.company} {j.job} {j.startDate} - {j.endDate}
-								</p>
+								<div className="flex flex-col flex-grow min-w-0 max-h-36 overflow-hidden ">
+									<div className="flex flex-col pb-2">
+										<div className="font-bold">{j.company} </div>
+										<div>
+											{j.job} {j.startDate.replace(/-/g, '/')} -{' '}
+											{j.endDate.replace(/-/g, '/')}
+										</div>
+									</div>
+									<ul className="max-h-36 overflow-hidden">
+										{j.description.map((item, index) => (
+											<li key={index}>{item}</li>
+										))}
+									</ul>
+								</div>
 
-								<div className="flex gap-2 flex-shrink-0">
+								<div className="flex flex-col gap-2 flex-shrink-0">
 									<button
 										className="w-[80px] h-[30px] hover:bg-blue-700 hover:text-white text-blue-500 font-bold rounded border"
 										onClick={(e) => {
@@ -129,7 +140,7 @@ export default function Professional({
 					onChange={(e) => setNewDuty(e.target.value)}
 				/>
 				<button
-					className="w-1/3 bg-indigo-200 hover:bg-blue-700 text-white rounded mx-auto mt-2 py-1"
+					className="w-1/3 bg-indigo-300 hover:bg-blue-700 text-white rounded mx-auto mt-2 py-1"
 					onClick={handleAddDuty}
 				>
 					+ Add New Duty

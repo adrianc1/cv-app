@@ -86,12 +86,18 @@ export default function App() {
 
 	function handleAddJob(e) {
 		e.preventDefault();
-		console.log(jobForm);
-		const newJob = {
-			id: crypto.randomUUID(),
-			...jobForm,
-		};
-		setJobArray((prev) => [...prev, newJob]);
+
+		let updatedJobForm = { id: crypto.randomUUID(), ...jobForm };
+
+		if (newDuty.trim() !== '') {
+			updatedJobForm.description = [
+				...updatedJobForm.description,
+				newDuty.trim(),
+			];
+			setNewDuty('');
+		}
+
+		setJobArray((prev) => [...prev, updatedJobForm]);
 		setJobForm({
 			company: '',
 			job: '',
