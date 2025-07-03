@@ -17,7 +17,9 @@ function Form({ children }) {
 		>
 			<div className="title flex items-center justify-center gap-3">
 				<img src={resumeLogo} alt="" className="w-1/10 h-1/10" />
-				<h1 className="text-3xl font-bold my-8">CV/Resume Builder</h1>
+				<h1 className="text-3xl font-bold my-8 text-primary">
+					CV/Resume Builder
+				</h1>
 			</div>
 			{children}
 		</form>
@@ -28,6 +30,8 @@ export default function App() {
 	const [name, setName] = useState({ firstName: '', lastName: '' });
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
+	const [newDuty, setNewDuty] = useState('');
+
 	const [jobForm, setJobForm] = useState({
 		company: '',
 		job: '',
@@ -57,10 +61,6 @@ export default function App() {
 		setSchoolForm((prev) => ({ ...prev, [name]: value }));
 	}
 
-	function handleAddResponsibility(d) {
-		console.log(d);
-	}
-
 	function handleSkillInputChange(e) {
 		setSkill(e.target.value);
 	}
@@ -75,14 +75,23 @@ export default function App() {
 		setSkill('');
 	}
 
+	function handleAddDuty(e) {
+		e.preventDefault();
+		setJobForm((prev) => ({
+			...prev,
+			description: [...prev.description, newDuty],
+		}));
+		setNewDuty('');
+	}
+
 	function handleAddJob(e) {
 		e.preventDefault();
+		console.log(jobForm);
 		const newJob = {
 			id: crypto.randomUUID(),
 			...jobForm,
 		};
 		setJobArray((prev) => [...prev, newJob]);
-
 		setJobForm({
 			company: '',
 			job: '',
@@ -150,7 +159,9 @@ export default function App() {
 						handleAddJob={handleAddJob}
 						handleJobFormChange={handleJobFormChange}
 						jobForm={jobForm}
-						handleAddResponsibility={handleAddResponsibility}
+						handleAddDuty={handleAddDuty}
+						newDuty={newDuty}
+						setNewDuty={setNewDuty}
 					/>
 				</div>
 

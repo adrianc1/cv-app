@@ -6,7 +6,9 @@ export default function Professional({
 	jobForm,
 	handleAddJob,
 	handleJobFormChange,
-	handleAddResponsibility,
+	handleAddDuty,
+	setNewDuty,
+	newDuty,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
@@ -15,7 +17,6 @@ export default function Professional({
 		{ name: 'job', placeholder: 'Job Title', type: 'text' },
 		{ name: 'startDate', placeholder: 'Start Date', type: 'date' },
 		{ name: 'endDate', placeholder: 'End Date', type: 'date' },
-		{ name: 'description', placeholder: 'Description', type: 'text' },
 	];
 
 	function startEditing(id) {
@@ -77,8 +78,7 @@ export default function Professional({
 						) : (
 							<div className="flex items-center justify-between w-full gap-4 border border-gray-500 p-2">
 								<p className="flex-grow min-w-0 overflow-hidden break-words">
-									{j.company} {j.job} {j.startDate.replace(/-/g, '/')} -{' '}
-									{j.endDate.replace(/-/g, '/')}
+									{j.company} {j.job} {j.startDate} - {j.endDate}
 								</p>
 
 								<div className="flex gap-2 flex-shrink-0">
@@ -120,18 +120,21 @@ export default function Professional({
 						onChange={handleJobFormChange}
 					/>
 				))}
-
-				{/* <button
-					className=" w-1/4 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-full text-center mx-auto"
-					onClick={(e) => {
-						e.preventDefault();
-						const des = fields.filter((field) => field.name === 'description');
-						handleAddResponsibility(des);
-					}}
+				<input
+					key="description"
+					name="description"
+					type="text"
+					placeholder="Responsiblities/Duties"
+					value={newDuty}
+					onChange={(e) => setNewDuty(e.target.value)}
+				/>
+				<button
+					className="w-1/3 bg-indigo-200 hover:bg-blue-700 text-white rounded mx-auto mt-2 py-1"
+					onClick={handleAddDuty}
 				>
-					{' '}
-					Add Responsibility
-				</button> */}
+					+ Add New Duty
+				</button>
+
 				<button
 					className="w-1/3 bg-indigo-600 hover:bg-blue-700 text-white rounded mx-auto mt-2 py-1"
 					onClick={handleAddJob}
