@@ -1,17 +1,14 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 export default function Paper({ name, email, phone, education, jobs, skills }) {
 	const resumeRef = useRef(null);
 
-	const handlePrint = useCallback(
-		useReactToPrint({
-			content: () => resumeRef.current,
-			documentTitle: 'My_Resume',
-			removeAfterPrint: true,
-		}),
-		[]
-	);
+	const handlePrint = useReactToPrint({
+		contentRef: resumeRef, // Use contentRef instead of content
+		documentTitle: 'My_Resume',
+		removeAfterPrint: true,
+	});
 
 	return (
 		<div className="flex flex-col overflow-x-auto">
@@ -82,13 +79,9 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 					<button
 						className="w-1/2 bg-green-500 hover:bg-green-700 text-white font-semibold rounded-md mx-auto mt-2 py-2 transition duration-300 ease-in-out transform hover:scale-105"
 						onClick={(e) => {
-							e.preventDefault(); // Good practice to prevent default form submission
+							e.preventDefault();
 							console.log('resumeRef:', resumeRef.current);
-							// Call handlePrint as a function, not directly pass the event
-							// The setTimeout is still a good idea for timing
-							setTimeout(() => {
-								handlePrint();
-							}, 100);
+							handlePrint();
 						}}
 					>
 						Download Resume
