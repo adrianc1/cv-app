@@ -151,7 +151,7 @@ export default function App() {
 					<Email email={email} handleEmailChange={handleEmailChange} />
 					<Phone phone={phone} handlePhoneChange={handlePhoneChange} />
 					<button
-						className="w-1/3 bg-indigo-600 hover:bg-blue-700 text-white rounded mx-auto mt-2 py-1"
+						className="w-1/2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md mx-auto mt-2 py-2 transition duration-300 ease-in-out transform hover:scale-105"
 						onClick={(e) => e.preventDefault()}
 					>
 						Save Info

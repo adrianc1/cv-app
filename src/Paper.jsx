@@ -1,20 +1,24 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 export default function Paper({ name, email, phone, education, jobs, skills }) {
 	const resumeRef = useRef(null);
 
-	const handlePrint = useReactToPrint({
-		content: () => resumeRef.current,
-		documentTitle: 'My_Resume',
-		removeAfterPrint: true,
-	});
+	const handlePrint = useCallback(
+		useReactToPrint({
+			content: () => resumeRef.current,
+			documentTitle: 'My_Resume',
+			removeAfterPrint: true,
+		}),
+		[]
+	);
+
 	return (
 		<div className="flex flex-col overflow-x-auto">
 			<h2 className="text-4xl text-center my-4">Resume</h2>
 
 			{/* This wrapper controls width and scale for both paper and button */}
-			<div className="w-[816px] mx-auto transform scale-100 md:scale-90 sm:scale-75 xs:scale-[.65]">
+			<div className="w-[816px] mx-auto transform scale-100 ">
 				<div
 					ref={resumeRef}
 					className="h-[1056px] border border-gray-200 mt-8 lg:mt-0 rounded shadow-2xl pl-4 pt-4"
@@ -76,13 +80,15 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 				{/* Now inside the same scaled div, it will align perfectly */}
 				<div className="flex justify-start print:hidden md:justify-end my-4">
 					<button
-						className="bg-green-400 hover:bg-green-700 text-white rounded py-1 px-4 mb-4"
+						className="w-1/2 bg-green-500 hover:bg-green-700 text-white font-semibold rounded-md mx-auto mt-2 py-2 transition duration-300 ease-in-out transform hover:scale-105"
 						onClick={(e) => {
-							e.preventDefault();
-							if (!resumeRef.current) {
-								console.warn('resumeRef is null!');
-							}
-							handlePrint();
+							e.preventDefault(); // Good practice to prevent default form submission
+							console.log('resumeRef:', resumeRef.current);
+							// Call handlePrint as a function, not directly pass the event
+							// The setTimeout is still a good idea for timing
+							setTimeout(() => {
+								handlePrint();
+							}, 100);
 						}}
 					>
 						Download Resume

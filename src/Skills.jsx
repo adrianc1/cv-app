@@ -68,10 +68,11 @@ export default function Skills({
 					placeholder="Skill/Certification"
 					value={skill}
 					onChange={handleSkillInputChange}
+					className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
 				/>
 
 				<button
-					className="w-1/3 bg-indigo-600 hover:bg-blue-700 text-white rounded mx-auto mt-2 py-1"
+					className="w-1/2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md mx-auto mt-2 py-2 transition duration-300 ease-in-out transform hover:scale-105"
 					onClick={handleAddSkill}
 				>
 					{' '}
