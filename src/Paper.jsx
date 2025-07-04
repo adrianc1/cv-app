@@ -18,9 +18,9 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 			<div className="w-[816px] mx-auto transform scale-100 ">
 				<div
 					ref={resumeRef}
-					className="h-[1056px] border border-gray-200 mt-8 lg:mt-0 rounded shadow-2xl pl-4 pt-4"
+					className="h-[1056px] border border-gray-200 mt-0 lg:mt-0 rounded shadow-xl pl-4"
 				>
-					<div className="gen-info w-full text-center">
+					<div className="gen-info w-full text-center pt-6">
 						<h2 className="text-4xl text-center">
 							{name.firstName} {name.lastName}
 						</h2>

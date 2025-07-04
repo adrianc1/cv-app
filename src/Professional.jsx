@@ -97,7 +97,7 @@ export default function Professional({
 										)}
 									</div>
 
-									<div className="flex flex-col gap-2 flex-shrink-0 mt-2 md:mt-0">
+									<div className="flex lg:flex-col gap-2 flex-shrink-0 mt-2 md:mt-0">
 										<button
 											className="w-[80px] bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
 											onClick={(e) => {
