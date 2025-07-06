@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import Paper from './Paper';
 import Education from './Education';
 import Professional from './Professional';
@@ -35,20 +35,40 @@ function Accordion({ title, children, defaultOpen = true }) {
 	);
 }
 
-function Form({ children }) {
+function Form({ children, showFields, setShowFields }) {
 	return (
-		<form
-			action=""
-			className="flex flex-col w-full h-full flex-1 justify-around items-center"
-		>
-			<div className="title flex items-center justify-center gap-4">
-				<img src={resumeLogo} alt="" className="w-1/10 h-1/10" />
-				<h1 className="text-3xl font-bold my-8 text-primary">
-					EZ Resume Builder
+		<div className="flex flex-col flex-2 z-90">
+			<div className="flex flex-col">
+				<h1 className="text-3xl font-bold my-6 text-center text-primary text-indigo-700">
+					Let's Create Your Resume
 				</h1>
+				<button
+					onClick={(e) => {
+						e.preventDefault();
+						setShowFields((prev) => !prev);
+					}}
+					className="rounded-xl w-1/2 px-4 py-2  text-indigo-900 text-sm font-semibold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-md pointer z-101 self-end lg:hidden"
+				>
+					{showFields ? 'View Resume' : 'Edit Fields'}
+				</button>
 			</div>
-			{children}
-		</form>
+
+			<div
+				className={`min-h-screen w-full z-100 bg-gray-50 overflow-hidden ${
+					!showFields ? 'hidden' : ''
+				}  lg:flex lg:relative lg:flex-row`}
+			>
+				<form
+					action=""
+					className={`flex flex-col w-full h-full flex-1 justify-around items-center `}
+				>
+					<div className="title flex flex-col items-center justify-center">
+						{/* <img src={resumeLogo} alt="" className="w-1/10 h-1/10" /> */}
+					</div>
+					{children}
+				</form>
+			</div>
+		</div>
 	);
 }
 
@@ -158,6 +178,7 @@ function GeneralInformationForm({
 }
 
 export default function App() {
+	const [showFields, setShowFields] = useState(true);
 	const [name, setName] = useState({ firstName: '', lastName: '' });
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
@@ -272,7 +293,7 @@ export default function App() {
 
 	return (
 		<div className="flex w-full flex-col lg:w-full mx-auto  h-auto">
-			<nav className="h-16 w-full shadow-md flex items-center justify-between px-4 sm:px-8">
+			<nav className="h-16 w-full shadow-md flex items-center justify-between px-4 sm:px-8 z-1000">
 				{' '}
 				{/* Added px for horizontal padding, justify-between */}
 				<span
@@ -295,7 +316,7 @@ export default function App() {
 				<Landing setShowLanding={setShowLanding} />
 			) : (
 				<div className="lg:flex lg:flex-row">
-					<Form>
+					<Form setShowFields={setShowFields} showFields={showFields}>
 						<Accordion title="General Information" defaultOpen={true}>
 							<GeneralInformationForm
 								name={name}
@@ -340,14 +361,28 @@ export default function App() {
 							/>
 						</Accordion>
 					</Form>
-					<Paper
-						name={name}
-						email={email}
-						phone={phone}
-						education={schoolArray}
-						jobs={jobArray}
-						skills={skillsArray}
-					/>
+					<div className={`hidden lg:block flex-3`}>
+						<Paper
+							name={name}
+							email={email}
+							phone={phone}
+							education={schoolArray}
+							jobs={jobArray}
+							skills={skillsArray}
+						/>
+					</div>
+					<div
+						className={`${showFields ? 'hidden' : 'block'} lg:hidden flex-3`}
+					>
+						<Paper
+							name={name}
+							email={email}
+							phone={phone}
+							education={schoolArray}
+							jobs={jobArray}
+							skills={skillsArray}
+						/>
+					</div>
 				</div>
 			)}
 			<Footer />
