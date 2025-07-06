@@ -7,6 +7,7 @@ import Education from './Education';
 import Professional from './Professional';
 import resumeLogo from './resumelogo.png';
 import Skills from './Skills';
+import Landing from './Landing';
 import './App.css';
 
 function Form({ children }) {
@@ -124,8 +125,9 @@ export default function App() {
 	}
 
 	return (
-		<div className="flex flex-col lg:flex-row lg:w-full mx-auto w-9/10 h-auto">
-			<Form>
+		<div className="flex w-full flex-col lg:flex-row lg:w-full mx-auto  h-auto">
+			<Landing />
+			{/* <Form>
 				<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4 mt-8">
 					<h2 className="text-2xl font-bold">General Information</h2>
 					<Name
@@ -197,7 +199,7 @@ export default function App() {
 				education={schoolArray}
 				jobs={jobArray}
 				skills={skillsArray}
-			/>
+			/> */}
 		</div>
 	);
 }
