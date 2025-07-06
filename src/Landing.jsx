@@ -1,4 +1,4 @@
-export default function Landing() {
+export default function Landing({ setShowLanding }) {
 	// Lightning Fast Icon (similar to a bolt or speed)
 	const LightningFastIcon = ({ className }) => (
 		<svg
@@ -175,16 +175,6 @@ export default function Landing() {
 	return (
 		<main className="w-full">
 			{/* Navigation Bar */}
-			<nav className="h-16 w-full shadow-md flex items-center justify-between px-4 sm:px-8">
-				{' '}
-				{/* Added px for horizontal padding, justify-between */}
-				<span className="font-bold text-xl text-indigo-600">
-					EZ Resume Builder
-				</span>
-				<button className="rounded-xl px-4 py-2 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-sm font-semibold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-md">
-					Get Started
-				</button>
-			</nav>
 
 			{/* Hero Section */}
 			<section className="py-12 px-4 text-center">
@@ -206,7 +196,10 @@ export default function Landing() {
 					managers and beat the Applicant Tracking Systems (ATS) without
 					spending a dime.
 				</p>
-				<button className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105">
+				<button
+					onClick={() => setShowLanding(false)}
+					className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105"
+				>
 					Create Your Free Resume Now
 				</button>
 			</section>
@@ -283,7 +276,10 @@ export default function Landing() {
 				</ul>
 			</section>
 			<section className="w-full mx-auto text-center my-8">
-				<button className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105">
+				<button
+					onClick={() => setShowLanding(false)}
+					className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105"
+				>
 					Build My Resume
 				</button>
 			</section>

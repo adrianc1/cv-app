@@ -32,6 +32,7 @@ export default function App() {
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
 	const [newDuty, setNewDuty] = useState('');
+	const [showLanding, setShowLanding] = useState(true);
 
 	const [jobForm, setJobForm] = useState({
 		company: '',
@@ -126,80 +127,101 @@ export default function App() {
 
 	return (
 		<div className="flex w-full flex-col lg:flex-row lg:w-full mx-auto  h-auto">
-			<Landing />
-			{/* <Form>
-				<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4 mt-8">
-					<h2 className="text-2xl font-bold">General Information</h2>
-					<Name
+			<nav className="h-16 w-full shadow-md flex items-center justify-between px-4 sm:px-8">
+				{' '}
+				{/* Added px for horizontal padding, justify-between */}
+				<span
+					onClick={() => setShowLanding(true)}
+					className="font-bold text-xl text-indigo-600"
+				>
+					EZ Resume Builder
+				</span>
+				<button
+					onClick={() => setShowLanding(false)}
+					className="rounded-xl px-4 py-2 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-sm font-semibold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-md"
+				>
+					Get Started
+				</button>
+			</nav>
+			{showLanding ? (
+				<Landing setShowLanding={setShowLanding} />
+			) : (
+				<>
+					<Form>
+						<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4 mt-8">
+							<h2 className="text-2xl font-bold">General Information</h2>
+							<Name
+								name={name}
+								handleFirstNameChange={(e) =>
+									setName({ ...name, firstName: e.target.value })
+								}
+								handleLastNameChange={(e) =>
+									setName({ ...name, lastName: e.target.value })
+								}
+							/>
+							<Email
+								email={email}
+								handleEmailChange={(e) => setEmail(e.target.value)}
+							/>
+							<Phone
+								phone={phone}
+								handlePhoneChange={(e) => setPhone(e.target.value)}
+							/>
+							<button
+								className="w-1/2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md mx-auto mt-2 py-2 transition duration-300 ease-in-out transform hover:scale-105"
+								onClick={(e) => e.preventDefault()}
+							>
+								Save Info
+							</button>
+						</div>
+						<div className="general-info flex flex-col w-full lg:w-3/4 gap-2 my-8">
+							<h2 className="text-2xl font-bold">Professional Experience</h2>
+							<Professional
+								jobArray={jobArray}
+								setJobArray={setJobArray}
+								handleAddJob={handleAddJob}
+								handleJobFormChange={handleJobFormChange}
+								jobForm={jobForm}
+								handleAddDuty={handleAddDuty}
+								newDuty={newDuty}
+								setNewDuty={setNewDuty}
+							/>
+						</div>
+
+						<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
+							<h2 className="text-2xl font-bold">Educational Experience</h2>
+
+							<Education
+								schoolArray={schoolArray}
+								schoolForm={schoolForm}
+								setSchoolArray={setSchoolArray}
+								handleSchoolFormChange={handleSchoolFormChange}
+								handleAddSchool={handleAddSchool}
+							/>
+						</div>
+
+						<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
+							<h2 className="text-2xl font-bold">Skills/Certifications</h2>
+							<Skills
+								handleSkillInputChange={handleSkillInputChange}
+								handleAddSkill={handleAddSkill}
+								skill={skill}
+								setSkill={setSkill}
+								setSkillsArray={setSkillsArray}
+								skillsArray={skillsArray}
+							/>
+						</div>
+					</Form>
+					<Paper
 						name={name}
-						handleFirstNameChange={(e) =>
-							setName({ ...name, firstName: e.target.value })
-						}
-						handleLastNameChange={(e) =>
-							setName({ ...name, lastName: e.target.value })
-						}
-					/>
-					<Email
 						email={email}
-						handleEmailChange={(e) => setEmail(e.target.value)}
-					/>
-					<Phone
 						phone={phone}
-						handlePhoneChange={(e) => setPhone(e.target.value)}
+						education={schoolArray}
+						jobs={jobArray}
+						skills={skillsArray}
 					/>
-					<button
-						className="w-1/2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md mx-auto mt-2 py-2 transition duration-300 ease-in-out transform hover:scale-105"
-						onClick={(e) => e.preventDefault()}
-					>
-						Save Info
-					</button>
-				</div>
-				<div className="general-info flex flex-col w-full lg:w-3/4 gap-2 my-8">
-					<h2 className="text-2xl font-bold">Professional Experience</h2>
-					<Professional
-						jobArray={jobArray}
-						setJobArray={setJobArray}
-						handleAddJob={handleAddJob}
-						handleJobFormChange={handleJobFormChange}
-						jobForm={jobForm}
-						handleAddDuty={handleAddDuty}
-						newDuty={newDuty}
-						setNewDuty={setNewDuty}
-					/>
-				</div>
-
-				<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
-					<h2 className="text-2xl font-bold">Educational Experience</h2>
-
-					<Education
-						schoolArray={schoolArray}
-						schoolForm={schoolForm}
-						setSchoolArray={setSchoolArray}
-						handleSchoolFormChange={handleSchoolFormChange}
-						handleAddSchool={handleAddSchool}
-					/>
-				</div>
-
-				<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
-					<h2 className="text-2xl font-bold">Skills/Certifications</h2>
-					<Skills
-						handleSkillInputChange={handleSkillInputChange}
-						handleAddSkill={handleAddSkill}
-						skill={skill}
-						setSkill={setSkill}
-						setSkillsArray={setSkillsArray}
-						skillsArray={skillsArray}
-					/>
-				</div>
-			</Form>
-			<Paper
-				name={name}
-				email={email}
-				phone={phone}
-				education={schoolArray}
-				jobs={jobArray}
-				skills={skillsArray}
-			/> */}
+				</>
+			)}
 		</div>
 	);
 }
