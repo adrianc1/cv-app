@@ -333,7 +333,31 @@ export default function Landing({ setShowLanding }) {
 						</p>
 					</li>
 
-					{/* Feature 2: Effortlessly Professional */}
+					{/* Feature 2: 100% Free */}
+					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+						<span className="flex items-center justify-center w-16 h-16 text-orange-500 mb-4 flex-shrink-0">
+							<FreeIcon className="w-full h-full" />
+						</span>
+						<p className="text-lg text-gray-700">
+							<span className="font-bold text-gray-900">100% Free:</span> No
+							hidden fees, no subscriptions. Create and download your resume
+							without any cost.
+						</p>
+					</li>
+					{/* Feature 3: No Sign-Up Required */}
+					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+						<span className="flex items-center justify-center w-16 h-16 text-red-600 mb-4 flex-shrink-0">
+							<NoSignUpIcon className="w-full h-full" />
+						</span>
+						<p className="text-lg text-gray-700">
+							<span className="font-bold text-gray-900">
+								No Sign-Up Required:
+							</span>{' '}
+							Start building your resume instantly, no account creation needed.
+						</p>
+					</li>
+
+					{/* Feature 4: Effortlessly Professional */}
 					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
 						<span className="flex items-center justify-center w-16 h-16 text-green-600 mb-4 flex-shrink-0">
 							<ProfessionalIcon className="w-full h-full" />
@@ -347,19 +371,7 @@ export default function Landing({ setShowLanding }) {
 						</p>
 					</li>
 
-					{/* Feature 3: 100% Free */}
-					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-						<span className="flex items-center justify-center w-16 h-16 text-orange-500 mb-4 flex-shrink-0">
-							<FreeIcon className="w-full h-full" />
-						</span>
-						<p className="text-lg text-gray-700">
-							<span className="font-bold text-gray-900">100% Free:</span> No
-							hidden fees, no subscriptions. Create and download your resume
-							without any cost.
-						</p>
-					</li>
-
-					{/* Feature 4: User-Friendly Interface */}
+					{/* Feature 56: User-Friendly Interface */}
 					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
 						<span className="flex items-center justify-center w-16 h-16 text-yellow-500 mb-4 flex-shrink-0">
 							<UserFriendlyIcon className="w-full h-full" />
@@ -382,18 +394,6 @@ export default function Landing({ setShowLanding }) {
 							<span className="font-bold text-gray-900">Download & Go:</span>{' '}
 							Instantly download your resume in PDF format, ready to send to
 							potential employers.
-						</p>
-					</li>
-					{/* Feature 6: No Sign-Up Required */}
-					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-						<span className="flex items-center justify-center w-16 h-16 text-red-600 mb-4 flex-shrink-0">
-							<NoSignUpIcon className="w-full h-full" />
-						</span>
-						<p className="text-lg text-gray-700">
-							<span className="font-bold text-gray-900">
-								No Sign-Up Required:
-							</span>{' '}
-							Start building your resume instantly, no account creation needed.
 						</p>
 					</li>
 				</ul>
