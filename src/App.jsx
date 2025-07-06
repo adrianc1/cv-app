@@ -10,13 +10,41 @@ import Skills from './Skills';
 import Landing from './Landing';
 import './App.css';
 
+function Accordion({ title, children, defaultOpen = true }) {
+	const [isOpen, setIsOpen] = useState(defaultOpen);
+
+	return (
+		<div className="general-info flex flex-col w-full lg:w-3/4 gap-2 my-8">
+			<h2
+				className="text-2xl font-bold cursor-pointer hover:text-indigo-600 transition-colors flex items-center gap-2 select-none"
+				onClick={() => setIsOpen(!isOpen)}
+			>
+				{title}
+				<span
+					className="text-lg transition-transform duration-200"
+					style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}
+				>
+					▶
+				</span>
+			</h2>
+			<div
+				className={`transition-all duration-300 ease-in-out overflow-hidden ${
+					isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+				}`}
+			>
+				<div className="pt-2">{children}</div>
+			</div>
+		</div>
+	);
+}
+
 function Form({ children }) {
 	return (
 		<form
 			action=""
 			className="flex flex-col w-full h-full flex-1 justify-around items-center"
 		>
-			<div className="title flex items-center justify-center gap-3">
+			<div className="title flex items-center justify-center gap-4">
 				<img src={resumeLogo} alt="" className="w-1/10 h-1/10" />
 				<h1 className="text-3xl font-bold my-8 text-primary">
 					EZ Resume Builder
@@ -33,6 +61,7 @@ export default function App() {
 	const [phone, setPhone] = useState('');
 	const [newDuty, setNewDuty] = useState('');
 	const [showLanding, setShowLanding] = useState(true);
+	const [showWidget, setShowWidget] = useState(true);
 
 	const [jobForm, setJobForm] = useState({
 		company: '',
@@ -147,7 +176,7 @@ export default function App() {
 				{/* Added px for horizontal padding, justify-between */}
 				<span
 					onClick={() => setShowLanding(true)}
-					className="font-bold text-xl text-indigo-600"
+					className="font-bold text-xl text-indigo-600 pointer"
 				>
 					EZ Resume Builder
 				</span>
@@ -163,8 +192,7 @@ export default function App() {
 			) : (
 				<div className="lg:flex lg:flex-row">
 					<Form>
-						<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4 mt-8">
-							<h2 className="text-2xl font-bold">General Information</h2>
+						<Accordion title="General Information" defaultOpen={true}>
 							<Name
 								name={name}
 								handleFirstNameChange={(e) =>
@@ -188,9 +216,8 @@ export default function App() {
 							>
 								Save Info
 							</button>
-						</div>
-						<div className="general-info flex flex-col w-full lg:w-3/4 gap-2 my-8">
-							<h2 className="text-2xl font-bold">Professional Experience</h2>
+						</Accordion>
+						<Accordion title="Professional Experience" defaultOpen={true}>
 							<Professional
 								jobArray={jobArray}
 								setJobArray={setJobArray}
@@ -200,12 +227,11 @@ export default function App() {
 								handleAddDuty={handleAddDuty}
 								newDuty={newDuty}
 								setNewDuty={setNewDuty}
+								showWidget={showWidget}
 							/>
-						</div>
+						</Accordion>
 
-						<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
-							<h2 className="text-2xl font-bold">Educational Experience</h2>
-
+						<Accordion title="Education" defaultOpen={true}>
 							<Education
 								schoolArray={schoolArray}
 								schoolForm={schoolForm}
@@ -213,10 +239,9 @@ export default function App() {
 								handleSchoolFormChange={handleSchoolFormChange}
 								handleAddSchool={handleAddSchool}
 							/>
-						</div>
+						</Accordion>
 
-						<div className="general-info w-full lg:w-3/4 flex flex-col my-8">
-							<h2 className="text-2xl font-bold">Skills/Certifications</h2>
+						<Accordion title="Skills" defaultOpen={true}>
 							<Skills
 								handleSkillInputChange={handleSkillInputChange}
 								handleAddSkill={handleAddSkill}
@@ -225,7 +250,7 @@ export default function App() {
 								setSkillsArray={setSkillsArray}
 								skillsArray={skillsArray}
 							/>
-						</div>
+						</Accordion>
 					</Form>
 					<Paper
 						name={name}

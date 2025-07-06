@@ -9,6 +9,7 @@ export default function Professional({
 	handleAddDuty,
 	setNewDuty,
 	newDuty,
+	showWidget,
 }) {
 	// State to manage which job item is currently being edited
 	const [editingId, setEditingId] = useState(null);
@@ -125,7 +126,11 @@ export default function Professional({
 			)}
 
 			{/* Section to add a new job entry */}
-			<div className="flex flex-col gap-3 mt-4 p-4 border rounded-lg shadow-md bg-gray-50">
+			<div
+				className={`flex flex-col gap-3 mt-4 p-4 border rounded-lg shadow-md bg-gray-50 ${
+					!showWidget ? 'hidden' : ''
+				}  `}
+			>
 				<h3 className="text-xl font-bold text-gray-700 mb-2">Add New Job</h3>
 				{fields.map((field) => (
 					<input
@@ -145,7 +150,7 @@ export default function Professional({
 					placeholder="Responsibilities/Duties"
 					value={newDuty}
 					onChange={(e) => setNewDuty(e.target.value)} // Update newDuty state
-					className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+					className={`p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 `}
 				/>
 				<button
 					className="w-1/2 bg-indigo-400 hover:bg-indigo-500 text-white font-semibold rounded-md mx-auto py-2 transition duration-300 ease-in-out transform hover:scale-105"
