@@ -127,9 +127,7 @@ export default function Professional({
 
 			{/* Section to add a new job entry */}
 			<div
-				className={`flex flex-col gap-3 mt-4 p-4 border rounded-lg shadow-md bg-gray-50 ${
-					!showWidget ? 'hidden' : ''
-				}  `}
+				className={`flex flex-col gap-3 mt-4 p-4 border rounded-lg shadow-md bg-gray-50`}
 			>
 				<h3 className="text-xl font-bold text-gray-700 mb-2">Add New Job</h3>
 				{fields.map((field) => (
