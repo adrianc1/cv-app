@@ -349,7 +349,7 @@ export default function Landing({ setShowLanding }) {
 
 					{/* Feature 3: 100% Free */}
 					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-						<span className="flex items-center justify-center w-16 h-16 text-red-600 mb-4 flex-shrink-0">
+						<span className="flex items-center justify-center w-16 h-16 text-orange-500 mb-4 flex-shrink-0">
 							<FreeIcon className="w-full h-full" />
 						</span>
 						<p className="text-lg text-gray-700">
@@ -386,7 +386,7 @@ export default function Landing({ setShowLanding }) {
 					</li>
 					{/* Feature 6: No Sign-Up Required */}
 					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-						<span className="flex items-center justify-center w-16 h-16 text-purple-600 mb-4 flex-shrink-0">
+						<span className="flex items-center justify-center w-16 h-16 text-red-600 mb-4 flex-shrink-0">
 							<NoSignUpIcon className="w-full h-full" />
 						</span>
 						<p className="text-lg text-gray-700">
