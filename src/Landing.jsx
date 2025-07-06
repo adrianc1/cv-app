@@ -63,41 +63,83 @@ export default function Landing({ setShowLanding }) {
 		</svg>
 	);
 
-	// Free Icon (similar to a dollar sign with a cross or a gift)
-	const FreeIcon = ({ className }) => (
+	const FreeIcon = ({ className, size = 24 }) => (
 		<svg
 			className={className}
+			width={size}
+			height={size}
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
+			role="img"
+			aria-label="Free"
 		>
-			<path
-				d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
+			{/* Gift box base */}
+			<rect
+				x="4"
+				y="10"
+				width="16"
+				height="10"
+				rx="1"
 				stroke="currentColor"
 				strokeWidth="2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-			<path
-				d="M9 12H15"
+
+			{/* Gift box ribbon - vertical */}
+			<line
+				x1="12"
+				y1="10"
+				x2="12"
+				y2="20"
 				stroke="currentColor"
 				strokeWidth="2"
 				strokeLinecap="round"
-				strokeLinejoin="round"
 			/>
-			<path
-				d="M12 9V15"
+
+			{/* Gift box ribbon - horizontal */}
+			<line
+				x1="4"
+				y1="14"
+				x2="20"
+				y2="14"
 				stroke="currentColor"
 				strokeWidth="2"
 				strokeLinecap="round"
-				strokeLinejoin="round"
 			/>
+
+			{/* Bow - left loop */}
 			<path
-				d="M16 8L8 16"
+				d="M8 10C8 8 10 6 12 8"
 				stroke="currentColor"
 				strokeWidth="2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
+				fill="none"
+			/>
+
+			{/* Bow - right loop */}
+			<path
+				d="M16 10C16 8 14 6 12 8"
+				stroke="currentColor"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				fill="none"
+			/>
+
+			{/* Bow center knot */}
+			<circle cx="12" cy="8" r="1" fill="currentColor" />
+
+			{/* "FREE" text or star indicator */}
+			<circle cx="17" cy="7" r="2" fill="currentColor" />
+
+			{/* Star points inside the circle */}
+			<path
+				d="M17 6l.5 1h1l-.8.6.3 1-.5-.8-.5.8.3-1-.8-.6h1L17 6z"
+				fill="white"
+				stroke="none"
 			/>
 		</svg>
 	);
@@ -165,6 +207,75 @@ export default function Landing({ setShowLanding }) {
 			/>
 			<path
 				d="M20 21H4"
+				stroke="currentColor"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
+
+	const NoSignUpIcon = ({ className, size = 24 }) => (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			role="img"
+			aria-label="No sign up allowed"
+		>
+			{/* Background circle for better contrast */}
+			<circle
+				cx="12"
+				cy="12"
+				r="11"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1"
+				opacity="0.2"
+			/>
+
+			{/* User icon - head */}
+			<circle
+				cx="12"
+				cy="9"
+				r="3"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+
+			{/* User icon - body */}
+			<path
+				d="M6 20v-1a6 6 0 0 1 12 0v1"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+
+			{/* Prohibition symbol - diagonal line */}
+			<line
+				x1="4.93"
+				y1="4.93"
+				x2="19.07"
+				y2="19.07"
+				stroke="currentColor"
+				strokeWidth="2.5"
+				strokeLinecap="round"
+			/>
+
+			{/* Main prohibition circle */}
+			<circle
+				cx="12"
+				cy="12"
+				r="10"
+				fill="none"
 				stroke="currentColor"
 				strokeWidth="2"
 				strokeLinecap="round"
@@ -250,7 +361,7 @@ export default function Landing({ setShowLanding }) {
 
 					{/* Feature 4: User-Friendly Interface */}
 					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-						<span className="flex items-center justify-center w-16 h-16 text-yellow-600 mb-4 flex-shrink-0">
+						<span className="flex items-center justify-center w-16 h-16 text-yellow-500 mb-4 flex-shrink-0">
 							<UserFriendlyIcon className="w-full h-full" />
 						</span>
 						<p className="text-lg text-gray-700">
@@ -271,6 +382,18 @@ export default function Landing({ setShowLanding }) {
 							<span className="font-bold text-gray-900">Download & Go:</span>{' '}
 							Instantly download your resume in PDF format, ready to send to
 							potential employers.
+						</p>
+					</li>
+					{/* Feature 6: No Sign-Up Required */}
+					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+						<span className="flex items-center justify-center w-16 h-16 text-purple-600 mb-4 flex-shrink-0">
+							<NoSignUpIcon className="w-full h-full" />
+						</span>
+						<p className="text-lg text-gray-700">
+							<span className="font-bold text-gray-900">
+								No Sign-Up Required:
+							</span>{' '}
+							Start building your resume instantly, no account creation needed.
 						</p>
 					</li>
 				</ul>
