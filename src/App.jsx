@@ -123,21 +123,6 @@ export default function App() {
 		});
 	}
 
-	function handlePhoneChange(e) {
-		setPhone(e.target.value);
-	}
-
-	function handleFirstNameChange(e) {
-		setName({ ...name, firstName: e.target.value });
-	}
-	function handleLastNameChange(e) {
-		setName({ ...name, lastName: e.target.value });
-	}
-
-	function handleEmailChange(e) {
-		setEmail(e.target.value);
-	}
-
 	return (
 		<div className="flex flex-col lg:flex-row lg:w-full mx-auto w-9/10 h-auto">
 			<Form>
@@ -145,11 +130,21 @@ export default function App() {
 					<h2 className="text-2xl font-bold">General Information</h2>
 					<Name
 						name={name}
-						handleFirstNameChange={handleFirstNameChange}
-						handleLastNameChange={handleLastNameChange}
+						handleFirstNameChange={(e) =>
+							setName({ ...name, firstName: e.target.value })
+						}
+						handleLastNameChange={(e) =>
+							setName({ ...name, lastName: e.target.value })
+						}
 					/>
-					<Email email={email} handleEmailChange={handleEmailChange} />
-					<Phone phone={phone} handlePhoneChange={handlePhoneChange} />
+					<Email
+						email={email}
+						handleEmailChange={(e) => setEmail(e.target.value)}
+					/>
+					<Phone
+						phone={phone}
+						handlePhoneChange={(e) => setPhone(e.target.value)}
+					/>
 					<button
 						className="w-1/2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md mx-auto mt-2 py-2 transition duration-300 ease-in-out transform hover:scale-105"
 						onClick={(e) => e.preventDefault()}
