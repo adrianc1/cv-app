@@ -282,7 +282,10 @@ export default function App() {
 					EZ Resume Builder
 				</span>
 				<button
-					onClick={() => setShowLanding(false)}
+					onClick={() => {
+						setShowLanding(false);
+						window.scrollTo({ top: 0, behavior: 'smooth' });
+					}}
 					className="rounded-xl px-4 py-2 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-sm font-semibold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-md"
 				>
 					Get Started
@@ -303,7 +306,7 @@ export default function App() {
 								setPhone={setPhone}
 							/>
 						</Accordion>
-						<Accordion title="Professional Experience" defaultOpen={false}>
+						<Accordion title="Professional Experience" defaultOpen={true}>
 							<Professional
 								jobArray={jobArray}
 								setJobArray={setJobArray}
@@ -316,7 +319,7 @@ export default function App() {
 							/>
 						</Accordion>
 
-						<Accordion title="Education" defaultOpen={false}>
+						<Accordion title="Education" defaultOpen={true}>
 							<Education
 								schoolArray={schoolArray}
 								schoolForm={schoolForm}
@@ -326,7 +329,7 @@ export default function App() {
 							/>
 						</Accordion>
 
-						<Accordion title="Skills" defaultOpen={false}>
+						<Accordion title="Skills" defaultOpen={true}>
 							<Skills
 								handleSkillInputChange={handleSkillInputChange}
 								handleAddSkill={handleAddSkill}

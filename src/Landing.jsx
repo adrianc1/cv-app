@@ -308,7 +308,10 @@ export default function Landing({ setShowLanding }) {
 					spending a dime.
 				</p>
 				<button
-					onClick={() => setShowLanding(false)}
+					onClick={() => {
+						setShowLanding(false);
+						window.scrollTo({ top: 0, behavior: 'smooth' });
+					}}
 					className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105"
 				>
 					Create Your Free Resume Now
@@ -400,7 +403,10 @@ export default function Landing({ setShowLanding }) {
 			</section>
 			<section className="w-full mx-auto text-center my-8">
 				<button
-					onClick={() => setShowLanding(false)}
+					onClick={() => {
+						setShowLanding(false);
+						window.scrollTo({ top: 0, behavior: 'smooth' });
+					}}
 					className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105"
 				>
 					Build My Resume
