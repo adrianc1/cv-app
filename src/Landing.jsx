@@ -283,15 +283,6 @@ export default function Landing({ setShowLanding }) {
 					Build My Resume
 				</button>
 			</section>
-			<footer>
-				<div className="mx-auto text-center">
-					{' '}
-					2025 &copy; <a href="https://dreauxdigital.com/">
-						Dreaux Digital.
-					</a>{' '}
-					All Rights Reserved.
-				</div>
-			</footer>
 		</main>
 	);
 }

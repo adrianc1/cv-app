@@ -125,8 +125,23 @@ export default function App() {
 		});
 	}
 
+	function Footer() {
+		return (
+			<footer>
+				<div className="mx-auto py-8 text-center">
+					{' '}
+					2025 &copy;{' '}
+					<a href="https://dreauxdigital.com/" className="text-blue-700">
+						Dreaux Digital.
+					</a>{' '}
+					All Rights Reserved.
+				</div>
+			</footer>
+		);
+	}
+
 	return (
-		<div className="flex w-full flex-col lg:flex-row lg:w-full mx-auto  h-auto">
+		<div className="flex w-full flex-col lg:w-full mx-auto  h-auto">
 			<nav className="h-16 w-full shadow-md flex items-center justify-between px-4 sm:px-8">
 				{' '}
 				{/* Added px for horizontal padding, justify-between */}
@@ -146,7 +161,7 @@ export default function App() {
 			{showLanding ? (
 				<Landing setShowLanding={setShowLanding} />
 			) : (
-				<>
+				<div className="lg:flex lg:flex-row">
 					<Form>
 						<div className="w-full lg:w-3/4 general-info h-auto flex flex-col gap-5 mb-4 mt-8">
 							<h2 className="text-2xl font-bold">General Information</h2>
@@ -220,8 +235,9 @@ export default function App() {
 						jobs={jobArray}
 						skills={skillsArray}
 					/>
-				</>
+				</div>
 			)}
+			<Footer />
 		</div>
 	);
 }
