@@ -361,6 +361,7 @@ export default function App() {
 							/>
 						</Accordion>
 					</Form>
+					{/* Desktop */}
 					<div className={`hidden lg:block flex-3`}>
 						<Paper
 							name={name}
@@ -371,6 +372,7 @@ export default function App() {
 							skills={skillsArray}
 						/>
 					</div>
+					{/* mobile paper resume */}
 					<div
 						className={`${showFields ? 'hidden' : 'block'} lg:hidden flex-3`}
 					>
