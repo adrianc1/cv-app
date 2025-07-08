@@ -293,7 +293,7 @@ export default function Landing({ setShowLanding }) {
 				{/* Added py and px for spacing */}
 				<h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
 					Craft Your Professional Resume in Minutes. <br />
-					<span className="font-semibold inline-block bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text">
+					<span className="font-semibold inline-block bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text mt-4">
 						Absolutely Free.
 					</span>
 				</h1>
