@@ -1,8 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 export default function Paper({ name, email, phone, education, jobs, skills }) {
 	const resumeRef = useRef(null);
+	const [accentColor, setAccentColor] = useState('indigo');
+	const [currentFont, setCurrentFont] = useState('');
+	const [template, setTemplate] = useState('modern');
 
 	const handlePrint = useReactToPrint({
 		contentRef: resumeRef, // Use contentRef instead of content
@@ -11,8 +14,42 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 	});
 
 	return (
-		<div className="flex flex-col overflow-x-auto">
+		<div className={`flex flex-col overflow-x-auto`}>
 			<h2 className="text-4xl text-center my-4">Resume</h2>
+
+			<div className="flex w-full justify-around items-center mb-4">
+				<div className="w-1/4 flex flex-col">
+					<label htmlFor="accent-color">Select Color</label>
+					<select
+						name="accent-color"
+						id="accent-color"
+						value={accentColor}
+						className="w-1/2 border"
+						onChange={(e) => {
+							setAccentColor(e.target.value);
+						}}
+					>
+						<option value="indigo">Indigo</option>
+						<option value="black">Black</option>
+						<option value="red">Red</option>
+						<option value="blue">Blue</option>
+					</select>
+				</div>
+				<div className="w-1/4 flex flex-col">
+					<label htmlFor="accent-color">Select Template</label>
+					<select
+						name="accent-color"
+						id="accent-color"
+						value={template}
+						className="w-1/2 border "
+						onChange={(e) => {
+							setTemplate(e.target.value);
+						}}
+					>
+						<option value="indigo">Modern</option>
+					</select>
+				</div>
+			</div>
 
 			{/* This wrapper controls width and scale for both paper and button */}
 			<div className="w-[816px] mx-auto transform scale-100 ">
@@ -24,7 +61,13 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 						<h2 className="text-4xl text-center">
 							{name.firstName} {name.lastName}
 						</h2>
-						<div className="contact-info flex justify-center gap-4 border-b border-indigo-400 w-[80%] mx-auto pb-2">
+						<div
+							className={`contact-info flex justify-center gap-4 border-b w-[80%] mx-auto pb-2 ${
+								accentColor === 'indigo' ? 'border-indigo-400' : ''
+							} ${accentColor === 'black' ? 'border-black-400' : ''} ${
+								accentColor === 'red' ? 'border-red-400' : ''
+							} ${accentColor === 'blue' ? 'border-blue-400' : ''}`}
+						>
 							<p>{email}</p> <p>{phone}</p>
 						</div>
 					</div>
@@ -75,7 +118,7 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 				</div>
 
 				{/* Now inside the same scaled div, it will align perfectly */}
-				<div className="flex justify-start print:hidden md:justify-end my-4">
+				<div className="flex justify-start self-end print:hidden md:justify-end my-4">
 					<button
 						className="w-1/2 bg-green-500 hover:bg-green-700 text-white font-semibold rounded-md mx-auto mt-2 py-2 transition duration-300 ease-in-out transform hover:scale-105"
 						onClick={(e) => {
