@@ -1,8 +1,8 @@
 import { useState, useSyncExternalStore } from 'react';
+import { PDFViewer } from '@react-pdf/renderer';
 import Paper from './Paper';
 import Education from './Education';
 import Professional from './Professional';
-import resumeLogo from './resumelogo.png';
 import Skills from './Skills';
 import Landing from './Landing';
 import './App.css';

@@ -1,12 +1,18 @@
 import React, { useRef, useState } from 'react';
+import {
+	Document,
+	Page,
+	Text,
+	View,
+	StyleSheet,
+	Select,
+} from '@react-pdf/renderer';
 import { useReactToPrint } from 'react-to-print';
+import SelectColor from './SelectColor';
+import SelectFont from './SelectFont';
+import SelectTemplate from './SelectTemplate';
 
 export default function Paper({ name, email, phone, education, jobs, skills }) {
-	const fontOptions = [
-		{ label: 'Arial', value: 'Arial, sans-serif' },
-		{ label: 'Georgia', value: 'Georgia, serif' },
-		{ label: 'Poppins', value: 'Poppins, sans-serif' }, // Assuming Poppins is loaded
-	];
 	const resumeRef = useRef(null);
 	const [accentColor, setAccentColor] = useState('indigo');
 	const [currentFont, setCurrentFont] = useState('Poppins, sans-serif');
@@ -23,65 +29,15 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 			<h2 className="text-4xl text-center my-4">Resume</h2>
 
 			<div className="flex w-full justify-around items-center mb-4">
-				{/* Select Color */}
-				<div className="w-1/4 flex flex-col">
-					<label htmlFor="accent-color">Select Color</label>
-					<select
-						name="accent-color"
-						id="accent-color"
-						value={accentColor}
-						className="w-1/2 border border-gray-300  rounded-md focus:ring focus:ring-blue-200"
-						onChange={(e) => {
-							setAccentColor(e.target.value);
-						}}
-					>
-						<option value="indigo">Indigo</option>
-						<option value="black">Black</option>
-						<option value="red">Red</option>
-						<option value="blue">Blue</option>
-					</select>
-				</div>
+				<SelectColor
+					accentColor={accentColor}
+					setAccentColor={setAccentColor}
+				/>
+				<SelectFont currentFont={currentFont} setCurrentFont={setCurrentFont} />
 
-				{/* Select Font */}
-				<div className="w-1/4 flex flex-col">
-					<label htmlFor="accent-color">Select Font</label>
-					<select
-						name="accent-color"
-						id="accent-color"
-						value={currentFont}
-						className="w-1/2 border border-gray-300  rounded-md focus:ring focus:ring-blue-200 "
-						onChange={(e) => {
-							setCurrentFont(e.target.value);
-						}}
-					>
-						{fontOptions.map((font) => {
-							return (
-								<option key={font.value} value={font.value}>
-									{font.label}
-								</option>
-							);
-						})}
-					</select>
-				</div>
-
-				{/* Select Template */}
-				<div className="w-1/4 flex flex-col">
-					<label htmlFor="accent-color">Select Template</label>
-					<select
-						name="template"
-						id="template"
-						value={template}
-						className="w-1/2 border border-gray-300  rounded-md focus:ring focus:ring-blue-200 "
-						onChange={(e) => {
-							setTemplate(e.target.value);
-						}}
-					>
-						<option value="modern">Modern</option>
-					</select>
-				</div>
+				<SelectTemplate template={template} setTemplate={setTemplate} />
 			</div>
 
-			{/* This wrapper controls width and scale for both paper and button */}
 			<div
 				style={{ fontFamily: currentFont }}
 				className="w-[816px] mx-auto transform scale-100  "
@@ -104,7 +60,6 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 							<p>{email}</p> <p>{phone}</p>
 						</div>
 					</div>
-
 					<h3 className="text-2xl px-4 mt-4">Professional Experience</h3>
 					<ul>
 						{jobs.map((job, index) => (
@@ -123,7 +78,6 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 							</li>
 						))}
 					</ul>
-
 					<h3 className="text-2xl px-4 mt-4">Education</h3>
 					<ul className="my-2">
 						{education.map((ed) => (
@@ -149,7 +103,6 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 						})}
 					</ul>
 				</div>
-
 				{/* Now inside the same scaled div, it will align perfectly */}
 				<div className="flex justify-start self-end print:hidden md:justify-end my-4">
 					<button
