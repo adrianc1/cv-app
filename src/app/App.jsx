@@ -1,10 +1,9 @@
-import { useState, useSyncExternalStore } from 'react';
-import { PDFViewer } from '@react-pdf/renderer';
-import Paper from './Paper';
-import Education from './Education';
-import Professional from './Professional';
-import Skills from './Skills';
-import Landing from './Landing';
+import { useState } from 'react';
+import Paper from '../features/paper/Paper';
+import Education from '../features/form/Education';
+import Professional from '../features/form/Professional';
+import Skills from '../features/form/Skills';
+import Landing from '../Landing';
 import './App.css';
 
 function Accordion({ title, children, defaultOpen = true }) {

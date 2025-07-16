@@ -34,7 +34,6 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 					setAccentColor={setAccentColor}
 				/>
 				<SelectFont currentFont={currentFont} setCurrentFont={setCurrentFont} />
-
 				<SelectTemplate template={template} setTemplate={setTemplate} />
 			</div>
 
