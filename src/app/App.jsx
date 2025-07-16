@@ -4,72 +4,10 @@ import Education from '../features/form/Education';
 import Professional from '../features/form/Professional';
 import Skills from '../features/form/Skills';
 import Landing from '../Landing';
+import FormWrapper from '../features/form/FormWrapper';
+import Nav from '../components/Nav';
+import Accordion from '../features/form/Accordion';
 import './App.css';
-
-function Accordion({ title, children, defaultOpen = true }) {
-	const [isOpen, setIsOpen] = useState(defaultOpen);
-
-	return (
-		<div className="general-info flex flex-col w-full lg:w-3/4 gap-2 my-8">
-			<h2
-				className="text-2xl font-bold cursor-pointer hover:text-indigo-600 transition-colors flex items-center gap-2 select-none"
-				onClick={() => setIsOpen(!isOpen)}
-			>
-				{title}
-				<span
-					className="text-lg transition-transform duration-200"
-					style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}
-				>
-					▶
-				</span>
-			</h2>
-			<div
-				className={`transition-all duration-300 ease-in-out overflow-hidden ${
-					isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-				}`}
-			>
-				<div className="pt-2">{children}</div>
-			</div>
-		</div>
-	);
-}
-
-function Form({ children, showFields, setShowFields }) {
-	return (
-		<div className="flex flex-col flex-2 z-90">
-			<div className="flex flex-col">
-				<h1 className="text-3xl font-bold my-6 text-center text-primary text-indigo-700">
-					Let's Create Your Resume
-				</h1>
-				<button
-					onClick={(e) => {
-						e.preventDefault();
-						setShowFields((prev) => !prev);
-					}}
-					className="rounded-xl w-1/2 px-4 py-2  text-indigo-900 text-sm font-semibold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-md pointer z-101 self-end lg:hidden"
-				>
-					{showFields ? 'View Resume' : 'Edit Fields'}
-				</button>
-			</div>
-
-			<div
-				className={`min-h-screen w-full z-100 bg-gray-50 overflow-hidden ${
-					!showFields ? 'hidden' : ''
-				}  lg:flex lg:relative lg:flex-row`}
-			>
-				<form
-					action=""
-					className={`flex flex-col w-full h-full flex-1 justify-around items-center `}
-				>
-					<div className="title flex flex-col items-center justify-center">
-						{/* <img src={resumeLogo} alt="" className="w-1/10 h-1/10" /> */}
-					</div>
-					{children}
-				</form>
-			</div>
-		</div>
-	);
-}
 
 const Name = ({
 	name = { firstName: '', lastName: '' },
@@ -183,7 +121,6 @@ export default function App() {
 	const [phone, setPhone] = useState('');
 	const [newDuty, setNewDuty] = useState('');
 	const [showLanding, setShowLanding] = useState(true);
-
 	const [jobForm, setJobForm] = useState({
 		company: '',
 		job: '',
@@ -198,7 +135,6 @@ export default function App() {
 		startDate: '',
 		endDate: '',
 	});
-
 	const [schoolArray, setSchoolArray] = useState([]);
 	const [skill, setSkill] = useState('');
 	const [skillsArray, setSkillsArray] = useState([]);
@@ -292,30 +228,12 @@ export default function App() {
 
 	return (
 		<div className="flex w-full flex-col lg:w-full mx-auto  h-auto">
-			<nav className="h-16 w-full shadow-md flex items-center justify-between px-4 sm:px-8 z-1000">
-				{' '}
-				{/* Added px for horizontal padding, justify-between */}
-				<span
-					onClick={() => setShowLanding(true)}
-					className="font-bold text-xl text-indigo-600 pointer"
-				>
-					EZ Resume Builder
-				</span>
-				<button
-					onClick={() => {
-						setShowLanding(false);
-						window.scrollTo({ top: 0, behavior: 'smooth' });
-					}}
-					className="rounded-xl px-4 py-2 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-sm font-semibold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-md"
-				>
-					Get Started
-				</button>
-			</nav>
+			<Nav setShowLanding={setShowLanding} />
 			{showLanding ? (
 				<Landing setShowLanding={setShowLanding} />
 			) : (
 				<div className="lg:flex lg:flex-row">
-					<Form setShowFields={setShowFields} showFields={showFields}>
+					<FormWrapper setShowFields={setShowFields} showFields={showFields}>
 						<Accordion title="General Information" defaultOpen={true}>
 							<GeneralInformationForm
 								name={name}
@@ -359,7 +277,7 @@ export default function App() {
 								skillsArray={skillsArray}
 							/>
 						</Accordion>
-					</Form>
+					</FormWrapper>
 					{/* Desktop */}
 					<div className={`hidden lg:block flex-3`}>
 						<Paper
