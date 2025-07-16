@@ -3,9 +3,8 @@ import { useState } from 'react';
 export default function Skills({
 	skillsArray,
 	setSkillsArray,
-	handleSkillInputChange,
-	handleAddSkill,
 	skill,
+	setSkill,
 }) {
 	const [editingId, setEditingId] = useState(null);
 
@@ -18,8 +17,22 @@ export default function Skills({
 		setEditingId(id);
 	}
 
-	function stopEditing() {
-		setEditingId(null);
+	// function stopEditing() {
+	// 	setEditingId(null);
+	// }
+
+	function handleSkillInputChange(e) {
+		setSkill(e.target.value);
+	}
+
+	function handleAddSkill(e) {
+		e.preventDefault();
+		const newSkill = {
+			id: crypto.randomUUID(),
+			skill,
+		};
+		setSkillsArray((prev) => [...prev, newSkill]);
+		setSkill('');
 	}
 
 	return (

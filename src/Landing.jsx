@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router';
+
 export default function Landing({ setShowLanding }) {
+	const navigate = useNavigate();
 	// Lightning Fast Icon (similar to a bolt or speed)
 	const LightningFastIcon = ({ className }) => (
 		<svg
@@ -309,7 +312,7 @@ export default function Landing({ setShowLanding }) {
 				</p>
 				<button
 					onClick={() => {
-						setShowLanding(false);
+						navigate('/builder');
 						window.scrollTo({ top: 0, behavior: 'smooth' });
 					}}
 					className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105"
@@ -404,7 +407,7 @@ export default function Landing({ setShowLanding }) {
 			<section className="w-full mx-auto text-center my-8">
 				<button
 					onClick={() => {
-						setShowLanding(false);
+						navigate('/builder');
 						window.scrollTo({ top: 0, behavior: 'smooth' });
 					}}
 					className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105"

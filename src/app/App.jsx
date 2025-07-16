@@ -1,4 +1,7 @@
+import { Routes, Route } from 'react-router';
+import Nav from '../components/Nav';
 import Home from '../Home';
+import Landing from '../Landing';
 import './App.css';
 
 export default function App() {
@@ -18,7 +21,11 @@ export default function App() {
 	}
 	return (
 		<div className="flex w-full flex-col lg:w-full mx-auto  h-auto">
-			<Home />
+			<Nav />
+			<Routes>
+				<Route path="/" element={<Landing />} />
+				<Route path="builder" element={<Home />} />
+			</Routes>
 			<Footer />
 		</div>
 	);

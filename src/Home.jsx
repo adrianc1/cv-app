@@ -34,94 +34,75 @@ export default function Home() {
 	const [skill, setSkill] = useState('');
 	const [skillsArray, setSkillsArray] = useState([]);
 
-	function handleSkillInputChange(e) {
-		setSkill(e.target.value);
-	}
-
-	function handleAddSkill(e) {
-		e.preventDefault();
-		const newSkill = {
-			id: crypto.randomUUID(),
-			skill,
-		};
-		setSkillsArray((prev) => [...prev, newSkill]);
-		setSkill('');
-	}
-
 	return (
 		<>
-			<Nav setShowLanding={setShowLanding} />
-			{showLanding ? (
+			{/* {showLanding ? (
 				<Landing setShowLanding={setShowLanding} />
-			) : (
-				<div className="lg:flex lg:flex-row">
-					<FormWrapper setShowFields={setShowFields} showFields={showFields}>
-						<Accordion title="General Information" defaultOpen={true}>
-							<GeneralInformationForm
-								name={name}
-								setName={setName}
-								email={email}
-								setEmail={setEmail}
-								phone={phone}
-								setPhone={setPhone}
-							/>
-						</Accordion>
-						<Accordion title="Professional Experience" defaultOpen={true}>
-							<Professional
-								jobArray={jobArray}
-								setJobArray={setJobArray}
-								jobForm={jobForm}
-								newDuty={newDuty}
-								setNewDuty={setNewDuty}
-								setJobForm={setJobForm}
-							/>
-						</Accordion>
-
-						<Accordion title="Education" defaultOpen={true}>
-							<Education
-								schoolArray={schoolArray}
-								schoolForm={schoolForm}
-								setSchoolArray={setSchoolArray}
-								setSchoolForm={setSchoolForm}
-							/>
-						</Accordion>
-
-						<Accordion title="Skills" defaultOpen={true}>
-							<Skills
-								handleSkillInputChange={handleSkillInputChange}
-								handleAddSkill={handleAddSkill}
-								skill={skill}
-								setSkill={setSkill}
-								setSkillsArray={setSkillsArray}
-								skillsArray={skillsArray}
-							/>
-						</Accordion>
-					</FormWrapper>
-					{/* Desktop */}
-					<div className={`hidden lg:block flex-3`}>
-						<Paper
+			) : ( */}
+			<div className="lg:flex lg:flex-row">
+				<FormWrapper setShowFields={setShowFields} showFields={showFields}>
+					<Accordion title="General Information" defaultOpen={true}>
+						<GeneralInformationForm
 							name={name}
+							setName={setName}
 							email={email}
+							setEmail={setEmail}
 							phone={phone}
-							education={schoolArray}
-							jobs={jobArray}
-							skills={skillsArray}
+							setPhone={setPhone}
 						/>
-					</div>
-					{/* mobile paper resume */}
-					<div
-						className={`${showFields ? 'hidden' : 'block'} lg:hidden flex-3`}
-					>
-						<Paper
-							name={name}
-							email={email}
-							phone={phone}
-							education={schoolArray}
-							jobs={jobArray}
-							skills={skillsArray}
+					</Accordion>
+					<Accordion title="Professional Experience" defaultOpen={true}>
+						<Professional
+							jobArray={jobArray}
+							setJobArray={setJobArray}
+							jobForm={jobForm}
+							newDuty={newDuty}
+							setNewDuty={setNewDuty}
+							setJobForm={setJobForm}
 						/>
-					</div>
+					</Accordion>
+
+					<Accordion title="Education" defaultOpen={true}>
+						<Education
+							schoolArray={schoolArray}
+							schoolForm={schoolForm}
+							setSchoolArray={setSchoolArray}
+							setSchoolForm={setSchoolForm}
+						/>
+					</Accordion>
+
+					<Accordion title="Skills" defaultOpen={true}>
+						<Skills
+							skill={skill}
+							setSkill={setSkill}
+							setSkillsArray={setSkillsArray}
+							skillsArray={skillsArray}
+						/>
+					</Accordion>
+				</FormWrapper>
+				{/* Desktop */}
+				<div className={`hidden lg:block flex-3`}>
+					<Paper
+						name={name}
+						email={email}
+						phone={phone}
+						education={schoolArray}
+						jobs={jobArray}
+						skills={skillsArray}
+					/>
 				</div>
+				{/* mobile paper resume */}
+				<div className={`${showFields ? 'hidden' : 'block'} lg:hidden flex-3`}>
+					<Paper
+						name={name}
+						email={email}
+						phone={phone}
+						education={schoolArray}
+						jobs={jobArray}
+						skills={skillsArray}
+					/>
+				</div>
+			</div>
 			)}
 		</>
 	);
