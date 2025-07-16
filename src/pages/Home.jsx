@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import Paper from './features/paper/Paper';
-import Education from './features/form/Education';
-import Professional from './features/form/Professional';
-import Skills from './features/form/Skills';
+import Paper from '../features/paper/Paper';
+import Education from '../features/form/Education';
+import Professional from '../features/form/Professional';
+import Skills from '../features/form/Skills';
 import Landing from './Landing';
-import FormWrapper from './features/form/FormWrapper';
-import Nav from './components/Nav';
-import Accordion from './features/form/Accordion';
-import GeneralInformationForm from './features/form/GeneralInformation';
+import FormWrapper from '../features/form/FormWrapper';
+import Nav from '../components/Nav';
+import Accordion from '../features/form/Accordion';
+import GeneralInformationForm from '../features/form/GeneralInformation';
 
 export default function Home() {
 	const [showFields, setShowFields] = useState(true);

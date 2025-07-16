@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router';
 
-export default function Landing({ setShowLanding }) {
+export default function Landing() {
 	const navigate = useNavigate();
+
 	// Lightning Fast Icon (similar to a bolt or speed)
 	const LightningFastIcon = ({ className }) => (
 		<svg
