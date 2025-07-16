@@ -4,12 +4,9 @@ export default function Professional({
 	jobArray,
 	setJobArray,
 	jobForm,
-	handleAddJob,
-	handleJobFormChange,
-	handleAddDuty,
+	setJobForm,
 	setNewDuty,
 	newDuty,
-	showWidget,
 }) {
 	// State to manage which job item is currently being edited
 	const [editingId, setEditingId] = useState(null);
@@ -39,6 +36,41 @@ export default function Professional({
 		setJobArray(filteredArray);
 	}
 
+	function handleJobFormChange(e) {
+		const { name, value } = e.target;
+		setJobForm((prev) => ({ ...prev, [name]: value }));
+	}
+
+	function handleAddJob(e) {
+		e.preventDefault();
+
+		let updatedJobForm = { id: crypto.randomUUID(), ...jobForm };
+
+		if (newDuty.trim() !== '') {
+			updatedJobForm.description = [
+				...updatedJobForm.description,
+				newDuty.trim(),
+			];
+			setNewDuty('');
+		}
+
+		setJobArray((prev) => [...prev, updatedJobForm]);
+		setJobForm({
+			company: '',
+			job: '',
+			description: [],
+			startDate: '',
+			endDate: '',
+		});
+	}
+	function handleAddDuty(e) {
+		e.preventDefault();
+		setJobForm((prev) => ({
+			...prev,
+			description: [...prev.description, newDuty],
+		}));
+		setNewDuty('');
+	}
 	return (
 		<div className="w-full flex flex-col gap-4">
 			{/* Section to display and manage existing professional experience entries */}
