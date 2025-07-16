@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 export default function Education({
 	schoolArray,
 	setSchoolArray,
-	handleSchoolFormChange,
-	handleAddSchool,
+	setSchoolForm,
 	schoolForm,
 }) {
 	// State to manage which item is currently being edited
@@ -33,6 +32,27 @@ export default function Education({
 	// Function to clear the editing state
 	function stopEditing() {
 		setEditingId(null);
+	}
+
+	function handleSchoolFormChange(e) {
+		const { name, value } = e.target;
+		setSchoolForm((prev) => ({ ...prev, [name]: value }));
+	}
+
+	function handleAddSchool(e) {
+		e.preventDefault();
+		const newSchool = {
+			id: crypto.randomUUID(),
+			...schoolForm,
+		};
+		setSchoolArray((prev) => [...prev, newSchool]);
+
+		setSchoolForm({
+			school: '',
+			cert: '',
+			startDate: '',
+			endDate: '',
+		});
 	}
 
 	return (

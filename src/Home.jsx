@@ -34,11 +34,6 @@ export default function Home() {
 	const [skill, setSkill] = useState('');
 	const [skillsArray, setSkillsArray] = useState([]);
 
-	function handleSchoolFormChange(e) {
-		const { name, value } = e.target;
-		setSchoolForm((prev) => ({ ...prev, [name]: value }));
-	}
-
 	function handleSkillInputChange(e) {
 		setSkill(e.target.value);
 	}
@@ -51,22 +46,6 @@ export default function Home() {
 		};
 		setSkillsArray((prev) => [...prev, newSkill]);
 		setSkill('');
-	}
-
-	function handleAddSchool(e) {
-		e.preventDefault();
-		const newSchool = {
-			id: crypto.randomUUID(),
-			...schoolForm,
-		};
-		setSchoolArray((prev) => [...prev, newSchool]);
-
-		setSchoolForm({
-			school: '',
-			cert: '',
-			startDate: '',
-			endDate: '',
-		});
 	}
 
 	return (
@@ -103,8 +82,7 @@ export default function Home() {
 								schoolArray={schoolArray}
 								schoolForm={schoolForm}
 								setSchoolArray={setSchoolArray}
-								handleSchoolFormChange={handleSchoolFormChange}
-								handleAddSchool={handleAddSchool}
+								setSchoolForm={setSchoolForm}
 							/>
 						</Accordion>
 
