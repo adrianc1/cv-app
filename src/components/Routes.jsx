@@ -1,5 +1,6 @@
 import App from '../app/App';
 import Builder from '../pages/Builder';
+import Landing from '../pages/Landing';
 import ErrorPage from './ErrorPage';
 
 const routes = [
@@ -7,10 +8,16 @@ const routes = [
 		path: '/',
 		element: <App />,
 		errorElement: <ErrorPage />,
-	},
-	{
-		path: 'builder',
-		element: <Builder />,
+		children: [
+			{
+				index: true,
+				element: <Landing />,
+			},
+			{
+				path: 'builder',
+				element: <Builder />,
+			},
+		],
 	},
 ];
 

@@ -1,8 +1,6 @@
-import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function Landing() {
-	const navigate = useNavigate();
-
 	// Lightning Fast Icon (similar to a bolt or speed)
 	const LightningFastIcon = ({ className }) => (
 		<svg
@@ -311,15 +309,11 @@ export default function Landing() {
 					managers and beat the Applicant Tracking Systems (ATS) without
 					spending a dime.
 				</p>
-				<button
-					onClick={() => {
-						navigate('/builder');
-						window.scrollTo({ top: 0, behavior: 'smooth' });
-					}}
-					className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105"
-				>
-					Create Your Free Resume Now
-				</button>
+				<Link to="builder">
+					<button className="rounded-xl px-8 py-4 bg-gradient-to-r from-pink-500 to-indigo-500 text-white text-lg font-bold hover:from-pink-600 hover:to-indigo-600 transition-all duration-300 shadow-lg transform hover:scale-105">
+						Create Your Free Resume Now!
+					</button>
+				</Link>
 			</section>
 
 			<section className="w-full py-12 px-4 bg-gray-50">

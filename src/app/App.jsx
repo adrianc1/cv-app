@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Builder from '../pages/Builder';
 import Landing from '../pages/Landing';
@@ -8,8 +9,7 @@ export default function App() {
 	return (
 		<div className="flex w-full flex-col lg:w-full mx-auto  h-auto">
 			<Nav />
-			<Landing />
-			<Builder />
+			<Outlet />
 			<Footer />
 		</div>
 	);
