@@ -15,6 +15,7 @@ export default function Home() {
 	const [phone, setPhone] = useState('');
 	const [location, setLocation] = useState('');
 	const [newDuty, setNewDuty] = useState('');
+	const [isDisabled, setIsDisabled] = useState(false);
 	const [showLanding, setShowLanding] = useState(false);
 	const [jobForm, setJobForm] = useState({
 		company: '',
@@ -51,6 +52,8 @@ export default function Home() {
 								setPhone={setPhone}
 								location={location}
 								setLocation={setLocation}
+								isDisabled={isDisabled}
+								setIsDisabled={setIsDisabled}
 							/>
 						</Accordion>
 						<Accordion title="Professional Experience" defaultOpen={true}>

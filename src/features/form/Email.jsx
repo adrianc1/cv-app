@@ -15,7 +15,7 @@ export default function Email({ email, handleEmailChange, isDisabled }) {
 				id="email"
 				value={email}
 				onChange={handleEmailChange}
-				className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2"
+				className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2 disabled:bg-gray-100 disabled:text-gray-500 disabled:border-gray-300 disabled:cursor-not-allowed"
 				placeholder="john.doe@example.com"
 			/>
 		</div>

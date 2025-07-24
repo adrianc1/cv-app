@@ -25,7 +25,7 @@ export default function Paper({
 	});
 
 	return (
-		<div className={`flex flex-col overflow-x-auto`}>
+		<div className={`flex flex-col overflow-x-auto w-full`}>
 			<h2 className="text-4xl text-center my-4">Resume</h2>
 
 			<div className="flex w-full justify-around items-center mb-4">
