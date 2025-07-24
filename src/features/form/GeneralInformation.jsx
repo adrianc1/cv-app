@@ -1,73 +1,9 @@
-const Name = ({
-	name = { firstName: '', lastName: '' },
-	handleFirstNameChange,
-	handleLastNameChange,
-}) => (
-	<div className="mb-4">
-		<label
-			htmlFor="firstName"
-			className="block text-sm font-medium text-gray-700"
-		>
-			First Name
-		</label>
-		<input
-			type="text"
-			id="firstName"
-			value={name.firstName}
-			onChange={handleFirstNameChange}
-			className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2"
-			placeholder="John"
-		/>
-		<label
-			htmlFor="lastName"
-			className="block text-sm font-medium text-gray-700 mt-2"
-		>
-			Last Name
-		</label>
-		<input
-			type="text"
-			id="lastName"
-			value={name.lastName}
-			onChange={handleLastNameChange}
-			className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2"
-			placeholder="Doe"
-		/>
-	</div>
-);
-
-// Email Component (placeholder)
-const Email = ({ email, handleEmailChange }) => (
-	<div className="mb-4">
-		<label htmlFor="email" className="block text-sm font-medium text-gray-700">
-			Email
-		</label>
-		<input
-			type="email"
-			id="email"
-			value={email}
-			onChange={handleEmailChange}
-			className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2"
-			placeholder="john.doe@example.com"
-		/>
-	</div>
-);
+import Email from './Email';
+import Phone from './Phone';
+import Name from './Name';
+import Location from './Location';
 
 // Phone Component (placeholder)
-const Phone = ({ phone, handlePhoneChange }) => (
-	<div className="mb-4">
-		<label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-			Phone
-		</label>
-		<input
-			type="tel"
-			id="phone"
-			value={phone}
-			onChange={handlePhoneChange}
-			className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2"
-			placeholder="(123) 456-7890"
-		/>
-	</div>
-);
 
 // NEW: GeneralInformationForm Component
 
@@ -78,6 +14,8 @@ function GeneralInformationForm({
 	setEmail,
 	phone,
 	setPhone,
+	location,
+	setLocation,
 }) {
 	return (
 		// Applied styling from the Professional component's "Add New Job" form wrapper
@@ -98,6 +36,10 @@ function GeneralInformationForm({
 			<Phone
 				phone={phone}
 				handlePhoneChange={(e) => setPhone(e.target.value)}
+			/>
+			<Location
+				location={location}
+				handleLocationChange={(e) => setLocation(e.target.value)}
 			/>
 		</div>
 	);

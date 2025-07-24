@@ -13,6 +13,7 @@ export default function Home() {
 	const [name, setName] = useState({ firstName: '', lastName: '' });
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
+	const [location, setLocation] = useState('');
 	const [newDuty, setNewDuty] = useState('');
 	const [showLanding, setShowLanding] = useState(false);
 	const [jobForm, setJobForm] = useState({
@@ -48,6 +49,8 @@ export default function Home() {
 								setEmail={setEmail}
 								phone={phone}
 								setPhone={setPhone}
+								location={location}
+								setLocation={setLocation}
 							/>
 						</Accordion>
 						<Accordion title="Professional Experience" defaultOpen={true}>
@@ -88,6 +91,7 @@ export default function Home() {
 							education={schoolArray}
 							jobs={jobArray}
 							skills={skillsArray}
+							location={location}
 						/>
 					</div>
 					{/* mobile paper resume */}
@@ -101,6 +105,7 @@ export default function Home() {
 							education={schoolArray}
 							jobs={jobArray}
 							skills={skillsArray}
+							location={location}
 						/>
 					</div>
 				</div>

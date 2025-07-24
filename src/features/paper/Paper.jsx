@@ -1,18 +1,18 @@
 import React, { useRef, useState } from 'react';
-import {
-	Document,
-	Page,
-	Text,
-	View,
-	StyleSheet,
-	Select,
-} from '@react-pdf/renderer';
 import { useReactToPrint } from 'react-to-print';
 import SelectColor from './SelectColor';
 import SelectFont from './SelectFont';
 import SelectTemplate from './SelectTemplate';
 
-export default function Paper({ name, email, phone, education, jobs, skills }) {
+export default function Paper({
+	name,
+	email,
+	phone,
+	location,
+	education,
+	jobs,
+	skills,
+}) {
 	const resumeRef = useRef(null);
 	const [accentColor, setAccentColor] = useState('indigo');
 	const [currentFont, setCurrentFont] = useState('Poppins, sans-serif');
@@ -46,7 +46,7 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 					className="h-[1056px] border border-gray-200 mt-0 lg:mt-0 rounded shadow-xl pl-4"
 				>
 					<div className="gen-info w-full text-center pt-6">
-						<h2 className="text-4xl text-center">
+						<h2 className="text-4xl text-center mb-4">
 							{name.firstName} {name.lastName}
 						</h2>
 						<div
@@ -56,7 +56,7 @@ export default function Paper({ name, email, phone, education, jobs, skills }) {
 								accentColor === 'red' ? 'border-red-400' : ''
 							} ${accentColor === 'blue' ? 'border-blue-400' : ''}`}
 						>
-							<p>{email}</p> <p>{phone}</p>
+							<p>{email}</p>|<p>{phone}</p>|<p>{location}</p>
 						</div>
 					</div>
 					<h3 className="text-2xl px-4 mt-4">Professional Experience</h3>
