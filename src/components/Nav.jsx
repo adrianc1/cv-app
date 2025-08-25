@@ -7,7 +7,7 @@ export default function Nav() {
 				{' '}
 				<div
 					onClick={() => navigate('/')}
-					className="font-bold text-xl text-indigo-600 pointer"
+					className="font-bold text-xl text-indigo-600 cursor-pointer"
 				>
 					EZ Resume Builder
 				</div>
