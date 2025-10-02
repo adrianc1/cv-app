@@ -287,12 +287,9 @@ export default function Landing() {
 	);
 	return (
 		<main className="w-full">
-			{/* Navigation Bar */}
-
 			{/* Hero Section */}
 			<section className="py-12 px-4 text-center">
 				{' '}
-				{/* Added py and px for spacing */}
 				<h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
 					Craft Your Professional Resume in Minutes. <br />
 					<span className="font-semibold inline-block bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text mt-4">
@@ -318,7 +315,6 @@ export default function Landing() {
 
 			<section className="w-full py-12 px-4 bg-gray-50">
 				{' '}
-				{/* Added padding and light background */}
 				<h3 className="text-3xl font-bold text-center mb-10 text-gray-800">
 					Why Choose Our Free Resume Builder?
 				</h3>
@@ -372,7 +368,7 @@ export default function Landing() {
 						</p>
 					</li>
 
-					{/* Feature 56: User-Friendly Interface */}
+					{/* Feature 5: User-Friendly Interface */}
 					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
 						<span className="flex items-center justify-center w-16 h-16 text-yellow-500 mb-4 flex-shrink-0">
 							<UserFriendlyIcon className="w-full h-full" />
@@ -386,7 +382,7 @@ export default function Landing() {
 						</p>
 					</li>
 
-					{/* Feature 5: Download & Go */}
+					{/* Feature 6: Download & Go */}
 					<li className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
 						<span className="flex items-center justify-center w-16 h-16 text-blue-600 mb-4 flex-shrink-0">
 							<DownloadGoIcon className="w-full h-full" />

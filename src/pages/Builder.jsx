@@ -34,6 +34,7 @@ export default function Home() {
 	const [schoolArray, setSchoolArray] = useState([]);
 	const [skill, setSkill] = useState('');
 	const [skillsArray, setSkillsArray] = useState([]);
+	window.scrollTo({ top: 0, behavior: 'smooth' });
 
 	return (
 		<>
